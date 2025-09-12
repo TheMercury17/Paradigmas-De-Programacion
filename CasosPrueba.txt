@@ -1,0 +1,54 @@
+# ----------------------
+# CASOS DE PRUEBA RÁPIDOS (opcional): descomentar run_tests() para ejecutarlos
+# ----------------------
+def run_tests():
+    """Pruebas rápidas para validar las operaciones básicas."""
+    t = TMSimulator()
+    cases = [
+        ('add', 3, 5, 8),
+        ('add', -3, 5, 2),
+        ('sub', 10, 4, 6),
+        ('sub', 4, 10, -6),
+        ('mul', 7, 6, 42),
+        ('mul', -7, 6, -42),
+        ('div', 20, 4, (5, 0)),
+        ('div', 7, 3, (2, 1)),
+        ('div', -7, 3, (-2, -1)),
+        ('pow', 2, 3, 8),
+        ('pow', -2, 3, -8),
+        ('isqrt', 16, None, 4),
+        ('isqrt', 15, None, 3),
+    ]
+    for c in cases:
+        kind = c[0]
+        a = c[1]
+        b = c[2]
+        expected = c[3]
+        try:
+            if kind == 'add':
+                res = t.add(a, b)
+            elif kind == 'sub':
+                res = t.subtract(a, b)
+            elif kind == 'mul':
+                res = t.multiply(a, b)
+            elif kind == 'div':
+                res = t.divide(a, b)
+            elif kind == 'pow':
+                res = t.power(a, b)
+            elif kind == 'isqrt':
+                res = t.isqrt(a)
+            ok = res == expected
+            print(f"Test {kind:4} {a:4}, {str(b) if b is not None else '':6} -> got {res:10} | expected {expected:10} | {'OK' if ok else 'FAIL'}")
+        except Exception as e:
+            print(f"Test {kind} {a} {b} -> Exception: {e}")
+
+
+# ----------------------
+# PUNTO DE ENTRADA
+# ----------------------
+if __name__ == '__main__':
+    print("Turing-arith simulator — implementado en Python.")
+    print("Notas: solo aritmética entera. Potencias con exp >= 0; sqrt entera; division por cero controlada.\n")
+    # Para ejecutar pruebas rápidas, descomenta la línea siguiente:
+    # run_tests()
+    menu()
