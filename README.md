@@ -182,7 +182,6 @@ Cálculo:
   - $Tw ≈ 0.010$
 
 ![Escenario 1. Baja carga](Escenario1.png)
-<img width="921" height="551" alt="Escenario 1. Baja carga" src="texto" />
 
 ---
 
@@ -207,7 +206,7 @@ Cálculo:
   - $Ts ≈ 0.25$  
   - $Tw ≈ 0.084$  
 
-<img width="921" height="551" alt="Escenario 2. Carga media" src="texto" />
+![Escenario 2. Carga media](Escenario2.png)
 
 ---
 
@@ -232,4 +231,4 @@ Cálculo:
   - $Ts ≈ 0.33$  
   - $Tw ≈ 0.13$  
 
-<img width="921" height="551" alt="Escenario 3. Alta carga" src="texto" />
+![Escenario 3. Alta carga](Escenario3.png)
