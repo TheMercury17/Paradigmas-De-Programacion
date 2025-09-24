@@ -16,9 +16,7 @@
 
 - Si ρ ≠ 1:
 
-\[
-p_0 = \frac{1-\rho}{1-\rho^{K+1}}, \quad p_n = p_0 \rho^n, \quad n=0,\dots,K.
-\]
+$p_0 = \frac{1-\rho}{1-\rho^{K+1}}, \quad p_n = p_0 \rho^n, \quad n=0,\dots,K.$
 
 - Si ρ = 1:
 
