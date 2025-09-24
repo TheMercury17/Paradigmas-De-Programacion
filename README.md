@@ -61,26 +61,6 @@ Se ejecutó una simulación discreta por eventos (loss system: si el sistema tie
 - **ρ = 1**: λ=3.0, μ=3.0, K=5  
 - **ρ > 1**: λ=5.0, μ=3.0, K=5 → ρ ≈ 1.6667
 
-### Resultados (analítico vs simulado):
-
-- **ρ < 1 (λ=2, μ=3, K=5)**  
-  - L analítico = 1.422556, simulado ≈ 1.854480  
-  - Lq analítico ≈ 0.422556, simulado ≈ 0.37267  
-  - pK analítica ≈ 0.048120, simulado ≈ 0.076106  
-  - λ_eff analítico ≈ 1.903759, simulado ≈ 1.847788  
-
-- **ρ = 1 (λ=3, μ=3, K=5)**  
-  - L analítico = 2.5, simulado ≈ 2.802754  
-  - Lq analítico = 1.5, simulado ≈ 1.402392  
-  - pK analítica = 0.166667, simulado ≈ 0.201501  
-  - λ_eff analítico = 2.5, simulado ≈ 2.395496  
-
-- **ρ > 1 (λ=5, μ=3, K=5)**  
-  - L analítico ≈ 3.793636, simulado ≈ 3.867928  
-  - Lq analítico ≈ 2.793636, simulado ≈ 2.73649  
-  - pK analítica ≈ 0.419576, simulado ≈ 0.436848  
-  - λ_eff analítico ≈ 2.902121, simulado ≈ 2.815758  
-
 ### Observaciones:
 
 - La simulación reproduce los valores analíticos **en promedio**.  
