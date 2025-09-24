@@ -86,7 +86,9 @@ Se ejecutó una simulación discreta por eventos (loss system: si el sistema tie
 - La simulación reproduce los valores analíticos **en promedio**.  
 - Se comprendió que a mayor ρ, mayor probabilidad de bloqueo; para ρ ≤ 1 baja pero no nula por el efecto de la capacidad finita K.
 
-## Explicación detallada del archivo CodigoCola.py:
+---
+
+## 3) Explicación detallada del archivo CodigoCola.py:
 
 1. **Objetivo general**  
    Es un simulador `M/M/n` por eventos (cola FIFO, llegadas Poisson / servicio exponencial).  
