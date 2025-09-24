@@ -148,7 +148,7 @@ Para replicar los resultados teóricos en la interfaz de NetLogo (`Discrete_Even
 
 $ρ = \frac{\lambda}{\mu}$
 donde:  
-  - $\lambda% = tasa de llegadas (arrivals por tick).  
+  - $\lambda$ = tasa de llegadas (arrivals por tick).  
   - $\mu$ = tasa de servicio (clientes por tick).  
 
 - En NetLogo:  
@@ -157,6 +157,8 @@ donde:
 
 Por lo tanto, para calcular una tasa de servicio de $\mu = 5$, se debe fijar `mean-service-time = 1/5 = 0.2`.
 En ese orden de ideas se plantearon los escenarios del 1 al 3 en NetLogo.
+
+---
 
 ### Escenario 1. Baja carga (λ = 0.1, ρ = 0.02)
 Cálculo:  
@@ -224,17 +226,3 @@ Cálculo:
   - $Nw ≈ 0.27$  
   - $Ts ≈ 0.33$  
   - $Tw ≈ 0.13$  
-
----
-
-### Qué observar en la interfaz
-
-En la parte inferior de la GUI aparecen los monitores principales:  
-
-- **Avg. Queue Len** ≈ Nw (número medio en cola).  
-- **Avg. Time in Q** ≈ Tw (tiempo medio en cola).  
-- **Avg. Time in Sys** ≈ Ts (tiempo medio en el sistema).  
-- **Server Utilization** ≈ ρ (utilización del servidor).  
-- **Avg. Queue Len + Server Utilization** ≈ Ns (número medio en sistema).  
-
-Estos resultados simulados pueden compararse con los valores teóricos esperados para validar el modelo.
