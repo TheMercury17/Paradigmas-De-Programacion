@@ -53,13 +53,39 @@ $T_S = W = \frac{L}{\lambda_{\mathrm{eff}}}, \quad T_w = W_q = \frac{L_q}{\lambd
 
 ## 2) Comprobación computacional (resumen)
 
-Se ejecutó una simulación discreta por eventos (loss system: si el sistema tiene K clientes, la llegada se bloquea) y se compararon resultados analíticos vs simulados para 3 escenarios (K=5 en todos).
-
 ### Escenarios:
 
-- **ρ < 1**: λ=2.0, μ=3.0, K=5 → ρ ≈ 0.6667  
-- **ρ = 1**: λ=3.0, μ=3.0, K=5  
-- **ρ > 1**: λ=5.0, μ=3.0, K=5 → ρ ≈ 1.6667
+Se toma **K = 10** y **μ = 5** como 5 clientes por unidad de tiempo y se varía **λ** entre 0.1 y 2 para analizar tres escenarios:
+
+###  Escenario 1. Baja carga (λ = 0.1, ρ = 0.02) donde:
+- $P_0 \approx 0.981$  
+- $P_K \approx 0.000$  
+- $\lambda_{eff} \approx 0.100$  
+- $N_s \approx 0.020$  
+- $N_w \approx 0.001$  
+- $T_s \approx 0.200$  
+- $T_w \approx 0.010$  
+ El sistema se encuentra casi vacío y tiene esperas mínimas.
+
+###  Escenario 2. Carga media (λ = 1, ρ = 0.2) donde:
+- $P_0 \approx 0.834$  
+- $P_K \approx 1.07 \times 10^{-7}$  
+- $\lambda_{eff} \approx 1.0$  
+- $N_s \approx 0.25$  
+- $N_w \approx 0.084$  
+- $T_s \approx 0.25$  
+- $T_w \approx 0.084$  
+ El sistema ve un flujo estable y empieza a observarse algo de cola.
+
+###  Escenario 3. Alta carga (λ = 2, ρ = 0.4) donde:
+- $P_0 \approx 0.600$  
+- $P_K \approx 1.58 \times 10^{-4}$  
+- $\lambda_{eff} \approx 2.0$  
+- $N_s \approx 0.67$  
+- $N_w \approx 0.27$  
+- $T_s \approx 0.33$  
+- $T_w \approx 0.13$  
+ El sistema empieza a congestionarse dentro del limite de su capacidad.
 
 ---
 
