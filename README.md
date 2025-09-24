@@ -61,11 +61,6 @@ Se ejecutó una simulación discreta por eventos (loss system: si el sistema tie
 - **ρ = 1**: λ=3.0, μ=3.0, K=5  
 - **ρ > 1**: λ=5.0, μ=3.0, K=5 → ρ ≈ 1.6667
 
-### Observaciones:
-
-- La simulación reproduce los valores analíticos **en promedio**.  
-- Se comprendió que a mayor ρ, mayor probabilidad de bloqueo; para ρ ≤ 1 baja pero no nula por el efecto de la capacidad finita K.
-
 ---
 
 ## 3) Explicación detallada del archivo CodigoCola.py:
