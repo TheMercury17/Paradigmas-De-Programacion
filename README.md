@@ -160,70 +160,70 @@ En ese orden de ideas se plantearon los escenarios del 1 al 3 en NetLogo.
 
 ### Escenario 1. Baja carga (λ = 0.1, ρ = 0.02)
 Cálculo:  
-- $\rho = \lambda / \mu = 0.1 / 5 = 0.02$  
-- Entonces \( \mu = 5 \) y `mean-service-time = 1 / μ = 0.2`.
+- $\rho = \lambda/\mu = 0.1/5 = 0.02$  
+- Entonces $\mu = 5$ y `mean-service-time = 1/μ = 0.2`.
 
 - **Parámetros en NetLogo**:  
   - number-of-servers = **1**  
   - mean-arrival-rate = **0.1**  
   - mean-service-time = **0.2**  
-  - max-run-time = **300000**  
+  - max-run-time = **340000**  
   - stats-reset-time = **5000**
 
 - **Valores teóricos esperados**:  
-  - P₀ ≈ 0.981  
-  - Pₖ ≈ 0.000  
-  - λ_eff ≈ 0.100  
-  - Nₛ ≈ 0.020  
-  - Nw ≈ 0.001  
-  - Ts ≈ 0.200  
-  - Tw ≈ 0.010  
+  - $P₀ ≈ 0.981$ 
+  - $Pₖ ≈ 0.000$  
+  - $λ_eff ≈ 0.100$  
+  - $Nₛ ≈ 0.020$  
+  - $Nw ≈ 0.001$  
+  - $Ts ≈ 0.200$  
+  - $Tw ≈ 0.010$  
 
 ---
 
 ### Escenario 2. Carga media (λ = 1, ρ = 0.2)
 Cálculo:  
-- \( \rho = \lambda / \mu = 1 / 5 = 0.2 \).  
-- Entonces \( \mu = 5 \) y `mean-service-time = 0.2`.
+- $\rho = \lambda/\mu = 1/5 = 0.2$  
+- Entonces $\mu = 5$ y `mean-service-time = 0.2`.
 
 - **Parámetros en NetLogo**:  
   - number-of-servers = **1**  
   - mean-arrival-rate = **1.0**  
   - mean-service-time = **0.2**  
-  - max-run-time = **300000**  
+  - max-run-time = **340000**  
   - stats-reset-time = **5000**
 
 - **Valores teóricos esperados**:  
-  - P₀ ≈ 0.834  
-  - Pₖ ≈ 1.07 × 10⁻⁷  
-  - λ_eff ≈ 1.0  
-  - Nₛ ≈ 0.25  
-  - Nw ≈ 0.084  
-  - Ts ≈ 0.25  
-  - Tw ≈ 0.084  
+  - $P₀ ≈ 0.834$  
+  - $Pₖ ≈ 1.07 × 10⁻⁷$  
+  - $λ_eff ≈ 1.0$  
+  - $Nₛ ≈ 0.25$  
+  - $Nw ≈ 0.084$  
+  - $Ts ≈ 0.25$  
+  - $Tw ≈ 0.084$  
 
 ---
 
 ### Escenario 3. Alta carga (λ = 2, ρ = 0.4)
 Cálculo:  
-- \( \rho = \lambda / \mu = 2 / 5 = 0.4 \).  
-- Entonces \( \mu = 5 \) y `mean-service-time = 0.2`.
+- $\rho = \lambda/\mu = 2/5 = 0.4$  
+- Entonces $\mu = 5$ y `mean-service-time = 0.2`.
 
 - **Parámetros en NetLogo**:  
   - number-of-servers = **1**  
   - mean-arrival-rate = **2.0**  
   - mean-service-time = **0.2**  
-  - max-run-time = **300000**  
+  - max-run-time = **340000**  
   - stats-reset-time = **5000**
 
 - **Valores teóricos esperados**:  
-  - P₀ ≈ 0.600  
-  - Pₖ ≈ 1.58 × 10⁻⁴  
-  - λ_eff ≈ 2.0  
-  - Nₛ ≈ 0.67  
-  - Nw ≈ 0.27  
-  - Ts ≈ 0.33  
-  - Tw ≈ 0.13  
+  - $P₀ ≈ 0.600$  
+  - $Pₖ ≈ 1.58 × 10⁻⁴$  
+  - $λ_eff ≈ 2.0$  
+  - $Nₛ ≈ 0.67$  
+  - $Nw ≈ 0.27$  
+  - $Ts ≈ 0.33$  
+  - $Tw ≈ 0.13$  
 
 ---
 
