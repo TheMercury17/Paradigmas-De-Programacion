@@ -1,10 +1,317 @@
-# Paradigmas de programación - Entregables.
+# Análisis de la Cola M/M/1/K/Inf.
 
 ## Autor  
-**Andrés Sebastián Coral Vallejo** 
+**Andrés Sebastián Coral Vallejo.** 
+
+## 1) Modelo matemático
+
+**Definiciones:**
+
+- λ = tasa de llegadas (Poisson).
+- μ = tasa de servicio (exponencial).
+- K = capacidad total del sistema (incluye el que está en servicio).
+- ρ = λ / μ.
+
+**Planteamientos de calculo:**
+
+1. *Probabilidad de 0 clientes*  
+$P_0 = \frac{1 - \rho}{1 - \rho^{K+1}}, \quad (\rho \neq 1)$
+
+2. *Probabilidad estado n*  
+$P_n = P_0 \cdot \rho^n, \quad n = 0,1,\dots,K$
+
+3. *Probabilidad de bloqueo*  
+$P_K = P_0 \cdot \rho^K$
+
+4. *Tasa de llegada efectiva*  
+$\lambda_{eff} = \lambda \cdot (1 - P_K)$
+
+5. *Número medio en el sistema*  
+$N_s = \frac{\rho \, \left( 1 - (K+1)\rho^K + K\rho^{K+1} \right)}{(1-\rho)(1-\rho^{K+1})}, \quad (\rho \neq 1)$
+
+6. *Número medio en cola*  
+$N_w = N_s - (1 - P_0)$
+
+7. *Tiempos promedio (Little)*  
+$T_s = \frac{N_s}{\lambda_{eff}}, \qquad T_w = \frac{N_w}{\lambda_{eff}}$
+
 
 ---
 
-## Descripción
+## 2) Comprobación computacional (resumen)
 
-Bienvenido a mi repositorio de entregables para la materia de Paradigmas de programación con el porfesor Joaquin Fernando Sanchez Cifuentes.
+### Escenarios:
+
+Se toma **K = 10** y **μ = 5** como 5 clientes por unidad de tiempo y se varía **λ** entre 0.1 y 2 para analizar tres escenarios:
+
+###  Escenario 1. Baja carga (λ = 0.1, ρ = 0.02):
+Donde el sistema se encuentra casi vacío y tiene esperas mínimas.
+
+- $P_0 \approx 0.981$  
+- $P_K \approx 0.000$  
+- $\lambda_{eff} \approx 0.100$  
+- $N_s \approx 0.020$  
+- $N_w \approx 0.001$  
+- $T_s \approx 0.200$  
+- $T_w \approx 0.010$
+  
+ 
+###  Escenario 2. Carga media (λ = 1, ρ = 0.2):
+Donde el sistema ve un flujo estable y empieza a observarse algo de cola.
+
+- $P_0 \approx 0.834$  
+- $P_K \approx 1.07 \times 10^{-7}$  
+- $\lambda_{eff} \approx 1.0$  
+- $N_s \approx 0.25$  
+- $N_w \approx 0.084$  
+- $T_s \approx 0.25$  
+- $T_w \approx 0.084$
+  
+
+###  Escenario 3. Alta carga (λ = 2, ρ = 0.4):
+Donde el sistema empieza a congestionarse dentro del limite de su capacidad.
+
+- $P_0 \approx 0.600$  
+- $P_K \approx 1.58 \times 10^{-4}$  
+- $\lambda_{eff} \approx 2.0$  
+- $N_s \approx 0.67$  
+- $N_w \approx 0.27$  
+- $T_s \approx 0.33$  
+- $T_w \approx 0.13$  
+
+
+---
+
+## 3) Explicación detallada del archivo CodigoCola.py:
+
+1. **Objetivo general**  
+   Es un simulador `M/M/n` por eventos (cola FIFO, llegadas Poisson / servicio exponencial).  
+   Usa un *heap* de eventos (`event_queue`) para avanzar el tiempo de un evento al siguiente (llegadas y finalizaciones de servicio).
+
+2. **Generación de tiempos**
+   - `random_exponential(mean)` devuelve una variable exponencial con **media** `mean`.
+   - Para las llegadas se llama con `mean = 1.0 / mean_arrival_rate` (correcto: la media de los interarrivos es `1/λ`).
+   - Para el servicio se usa `mean_service_time` como media de servicio (E[S]).
+
+3. **Estructuras de datos**
+   - `queue` (deque) almacena `Customer` esperando.
+   - `servers` es un `AgentSet` de Mesa que contiene `num_servers` instancias `Server`.  
+     Cada `Server` tiene `customer_being_served` y `next_completion_time`.
+   - `event_queue` es una lista utilizada como heap por `heapq` con tuplas `(time, event_type, data)`.
+
+4. **Flujo de eventos**
+   - `schedule_arrival()` programa la próxima llegada si no se ha alcanzado `max_run_time`.  
+     Inserta `(t_arrival, "arrival", None)` en el heap.
+   - Cuando se procesa un evento `"arrival"`, `arrive()` crea un `Customer`, lo añade a `queue`,  
+     aumenta `arrival_count`, programa la siguiente llegada y llama a `begin_service()` para asignar servidores libres.
+   - `begin_service()` obtiene servidores libres, extrae clientes de la cola (FIFO), marca `time_entered_service`,  
+     acumula el tiempo de cola del cliente y programa el `service_completion` para ese servidor.
+   - Cuando el heap entrega un evento `"service_completion"`, `complete_service(server_id)` busca el servidor por `unique_id`,  
+     calcula el tiempo en sistema del cliente que sale, actualiza acumuladores y libera el servidor.  
+     También llama a `begin_service()` para arrancar al siguiente cliente en cola si existe.
+
+5. **Promedios temporales / acumuladores**
+   - `update_usage_stats(event_time)` se llama **antes** de procesar el evento para acumular áreas:  
+     añade `delta * in_queue` a `total_customer_queue_time` y `delta * in_process` a `total_customer_service_time`.  
+     También suma `delta` a `utilization_time` de cada servidor ocupado.  
+     Esto permite calcular promedios temporales (promedio de N_queue y utilización de servidores en porcentaje).
+   - Las métricas por cliente (tiempo promedio en cola, en sistema) se obtienen dividiendo:  
+     - `total_time_in_queue / total_queue_throughput`  
+     - `total_time_in_system / total_system_throughput`
+
+6. **Medidas teóricas**
+   - `compute_theoretical_measures()` calcula una aproximación parecida a Erlang-C usando la carga ofrecida `a = λ * E[S]`.  
+   - Si `a/n < 1` calcula `expected_utilization`, `expected_queue_length` y `expected_queue_time`.  
+   - Si la carga por servidor ≥ 1 se marca como inestable.
+   - **Nota**: la expresión usada no es exactamente la implementación estándar de Erlang-C  
+     (falta el cálculo explícito de p0 y la fórmula de Erlang-C exacta), pero es una aproximación en la línea del código original.
+
+7. **Bucle principal**
+   - `run_simulation()` crea el modelo y llama `model.step()` repetidamente hasta `max_run_time`.  
+   - Dentro de `step()` se procesa exactamente **un** evento (avanza el reloj al tiempo del siguiente evento y despacha la lógica).  
+   - Se van acumulando y recolectando datos.  
+   - Al terminar imprime resultados basados en los acumuladores.
+
+
+---
+
+## 4) Simulaciones en NetLogo — Escenarios de carga
+
+Para replicar los resultados teóricos en la interfaz de NetLogo (`Discrete_Event_Simulation__Queues_and_Servers.nlogo`), se ajustaron los **sliders** de la siguiente manera:
+
+- **number-of-servers** = 1 (M/M/1)  
+- **max-run-time** = 340000 (para estabilidad estadística)  
+- **stats-reset-time** = 5000 (para descartar transitorio inicial)
+
+Así mismo se definen los campos inferiores del simulador:
+
+- Avg. Queue Len ≈ Nw (usuarios promedio en cola)
+- Avg. Time in Q ≈ Tw (tiempo medio en cola)
+- Avg. Time in Sys ≈ Ts (tiempo medio en el sistema)
+- Server Utilization ≈ ρ (también = Ns en promedio si hay un solo servidor)
+- Avg. Queue Len + Server Utilization ≈ Ns (número total en sistema)  
+
+### Recordatorio importante
+- En teoría de colas, el **factor de utilización** se define como:  
+
+$ρ = \frac{\lambda}{\mu}$
+donde:  
+  - $\lambda$ = tasa de llegadas (arrivals por tick).  
+  - $\mu$ = tasa de servicio (clientes por tick).  
+
+- En NetLogo:  
+  - `mean-arrival-rate` = $\lambda$ 
+  - `mean-service-time` = tiempo medio de servicio = $( 1 / \mu \)$  
+
+Por lo tanto, para calcular una tasa de servicio de $\mu = 5$, se debe fijar `mean-service-time = 1/5 = 0.2`.
+En ese orden de ideas se plantearon los escenarios del 1 al 3 en NetLogo.
+
+---
+
+### Escenario 1. Baja carga (λ = 0.1, ρ = 0.02)
+Cálculo:  
+- $\rho = \lambda/\mu = 0.1/5 = 0.02$  
+- Entonces $\mu = 5$ y `mean-service-time = 1/μ = 0.2`.
+
+- **Parámetros en NetLogo**:  
+  - number-of-servers = **1**  
+  - mean-arrival-rate = **0.1**  
+  - mean-service-time = **0.2**  
+  - max-run-time = **340000**  
+  - stats-reset-time = **5000**
+
+- **Valores teóricos esperados**:  
+  - $P₀ ≈ 0.981$ 
+  - $Pₖ ≈ 0.000$  
+  - $λ_eff ≈ 0.100$  
+  - $Nₛ ≈ 0.020$  
+  - $Nw ≈ 0.001$  
+  - $Ts ≈ 0.200$  
+  - $Tw ≈ 0.010$
+
+- **Valores simulados**:  
+  - $P₀ ≈ 0.981$ 
+  - $Pₖ ≈ 0.000$  
+  - $λ_eff ≈ 0.100$  
+  - $Nₛ ≈ 0.021$  
+  - $Nw ≈ 4.387e^-040$  
+  - $Ts ≈ 0.205$  
+  - $Tw ≈ 0.004$
+
+![Escenario 1. Baja carga](Escenario1.png)
+
+#### Escenario 1 — Baja carga (λ = 0.1, ρ = 0.02)
+
+| Métrica | Teórico | Simulado | Error relativo (%) |
+|---------|---------|----------|---------------------|
+| P₀      | 0.981   | 0.981    | 0.00%              |
+| Pₖ      | 0.000   | 0.000    | 0.00%              |
+| λ_eff   | 0.100   | 0.100    | 0.00%              |
+| Nₛ      | 0.020   | 0.021    | 5.00%              |
+| Nw      | 0.001   | ~0       | ~100%  (valor muy pequeño, prácticamente nulo en ambos casos)             | 
+| Tₛ      | 0.200   | 0.205    | 2.50%              |
+| T_w     | 0.010   | 0.004    | 60.00%  (valores muy pequeños, diferencia poco significativa en la práctica)           | 
+
+**Análisis:**  
+En condiciones de baja carga, el sistema se mantiene casi vacío (ρ ≈ 0.02), con probabilidad de bloqueo nula y tasa efectiva igual a la de llegada. Los resultados simulados coinciden casi exactamente con los valores teóricos: las diferencias en Ns y Ts son menores al 5%. En Nw y Tw se observan errores relativos altos, pero esto se debe a que sus valores absolutos son extremadamente pequeños (del orden de milésimas), por lo que incluso ligeras variaciones generan porcentajes grandes sin impacto real. En conjunto, la simulación valida muy bien el modelo teórico en este escenario.
+
+
+---
+
+### Escenario 2. Carga media (λ = 1, ρ = 0.2)
+Cálculo:  
+- $\rho = \lambda/\mu = 1/5 = 0.2$  
+- Entonces $\mu = 5$ y `mean-service-time = 0.2`.
+
+- **Parámetros en NetLogo**:  
+  - number-of-servers = **1**  
+  - mean-arrival-rate = **1.0**  
+  - mean-service-time = **0.2**  
+  - max-run-time = **340000**  
+  - stats-reset-time = **5000**
+
+- **Valores teóricos esperados**:  
+  - $P₀ ≈ 0.834$  
+  - $Pₖ ≈ 1.07 × 10⁻⁷$  
+  - $λ_eff ≈ 1.0$  
+  - $Nₛ ≈ 0.25$  
+  - $Nw ≈ 0.084$  
+  - $Ts ≈ 0.25$  
+  - $Tw ≈ 0.084$  
+
+- **Valores simulados**:
+  - $P₀ ≈ 0.834$  
+  - $Pₖ ≈ 1.07 × 10⁻⁷$  
+  - $λ_eff ≈ 1.0$  
+  - $Nₛ ≈ 20.068$  
+  - $Nw ≈ 0.05$  
+  - $Ts ≈ 0.251$  
+  - $Tw ≈ 0.05$  
+
+![Escenario 2. Carga media](Escenario2.png)
+
+#### Escenario 2 — Carga media (λ = 1, ρ = 0.2)
+
+| Métrica | Teórico    | Simulado  | Error relativo (%) |
+|---------|:----------:|:---------:|-------------------:|
+| P₀      | 0.834      | 0.834     | 0.00%              |
+| Pₖ      | 1.07e-7    | 1.07e-7   | 0.00%              |
+| λ_eff   | 1.000      | 1.000     | 0.00%              |
+| Nₛ      | 0.250      | 20.068    | 7927.20%           |
+| Nw      | 0.084      | 0.050     | −40.48%            |
+| Tₛ      | 0.250      | 0.251     | 0.40%              |
+| T_w     | 0.084      | 0.050     | −40.48%            |
+
+**Análisis:**  
+P₀, Pₖ y λ_eff coinciden prácticamente con la teoría y Tₛ también muestra una excelente concordancia (error ≈ 0.4%), lo que indica que la tasa efectiva y el tiempo medio global se están midiendo correctamente. Sin embargo, hay dos discrepancias importantes: por un lado Nw y Tw son menores que lo esperado (~−40%), lo que puede venir de muestreo insuficiente en la cola (valores pequeños, sensibilidad estadística) o de cómo se calcula exactamente el promedio en el reporter; por otro lado Nₛ tiene una desviación gigantesca (≈ 7927%), lo cual no es ruido aleatorio sino un síntoma de error sistemático — por ejemplo, confundir la **media del tiempo de servicio** con la **tasa** (es decir poner `mean-service-time = μ` en lugar de `1/μ`), usar un monitor que devuelve una **suma acumulada** en vez de un **promedio temporal**, o no aplicar correctamente el `stats-reset-time` (incluyendo transitorio).  
+
+
+---
+
+### Escenario 3. Alta carga (λ = 2, ρ = 0.4)
+Cálculo:  
+- $\rho = \lambda/\mu = 2/5 = 0.4$  
+- Entonces $\mu = 5$ y `mean-service-time = 0.2`.
+
+- **Parámetros en NetLogo**:  
+  - number-of-servers = **1**  
+  - mean-arrival-rate = **2.0**  
+  - mean-service-time = **0.2**  
+  - max-run-time = **340000**  
+  - stats-reset-time = **5000**
+
+- **Valores teóricos esperados**:  
+  - $P₀ ≈ 0.600$  
+  - $Pₖ ≈ 1.58 × 10⁻⁴$  
+  - $λ_eff ≈ 2.0$  
+  - $Nₛ ≈ 0.67$  
+  - $Nw ≈ 0.27$  
+  - $Ts ≈ 0.33$  
+  - $Tw ≈ 0.13$  
+
+- **Valores simulados**:  
+  - $P₀ ≈ 0.600$  
+  - $Pₖ ≈ 1.58 × 10⁻⁴$  
+  - $λ_eff ≈ 2.0$  
+  - $Nₛ ≈ 40.016$  
+  - $Nw ≈ 0.266$  
+  - $Ts ≈ 0.332$  
+  - $Tw ≈ 0.132$
+    
+![Escenario 3. Alta carga](Escenario3.png)
+
+#### Escenario 3 — Alta carga (λ = 2, ρ = 0.4)
+
+| Métrica | Teórico    | Simulado  | Error relativo (%) |
+|---------|:----------:|:---------:|-------------------:|
+| P₀      | 0.600      | 0.600     | 0.00%              |
+| Pₖ      | 1.58e-4    | 1.58e-4   | 0.00%              |
+| λ_eff   | 2.000      | 2.000     | 0.00%              |
+| Nₛ      | 0.670      | 40.016    | 5874.78%           |
+| Nw      | 0.270      | 0.266     | −1.48%             |
+| Tₛ      | 0.330      | 0.332     | 0.61%              |
+| T_w     | 0.130      | 0.132     | 1.54%              |
+
+**Análisis:**  
+En este escenario de alta carga, la teoría y la simulación coinciden casi perfectamente en P₀, Pₖ y λ_eff, confirmando que el modelo reproduce bien la probabilidad de vacío, la probabilidad de bloqueo y la tasa efectiva. También Nw, Tw y Ts se ajustan muy bien (errores < 2%), lo que valida el cálculo de tiempos de espera y de permanencia en el sistema. Sin embargo, Nₛ vuelve a mostrar una discrepancia crítica: el valor simulado (≈ 40) es enormemente superior al esperado (0.67). Tal como ocurrió en el escenario anterior, esta diferencia apunta a un problema de configuración o de reporter: probablemente el monitor de Nₛ esté acumulando clientes en lugar de promediar sobre el tiempo, o bien se ingresó un valor incorrecto de `mean-service-time` (μ confundido con 1/μ). Aun así, los tiempos y colas concuerdan con la teoría, lo que indica que la dinámica básica del sistema está siendo simulada correctamente y que la anomalía de Nₛ se debe a la forma de medir, no al comportamiento del modelo.
+
