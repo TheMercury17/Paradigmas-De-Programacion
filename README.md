@@ -132,3 +132,111 @@ Donde el sistema empieza a congestionarse dentro del limite de su capacidad.
    - Se van acumulando y recolectando datos.  
    - Al terminar imprime resultados basados en los acumuladores.
 
+
+---
+
+## 4) Simulaciones en NetLogo — Escenarios de carga
+
+Para replicar los resultados teóricos en la interfaz de NetLogo (`Discrete_Event_Simulation__Queues_and_Servers.nlogo`), se ajustaron los **sliders** de la siguiente manera:
+
+- **number-of-servers** = 1 (M/M/1)  
+- **max-run-time** = 340000 (para estabilidad estadística)  
+- **stats-reset-time** = 5000 (para descartar transitorio inicial)  
+
+### Recordatorio importante
+- En teoría de colas, el **factor de utilización** se define como:  
+
+$rho = \frac{\lambda}{\mu}$
+
+donde:  
+  - $\lambda% = tasa de llegadas (arrivals por tick).  
+  - $\mu$ = tasa de servicio (clientes por tick).  
+
+- En NetLogo:  
+  - `mean-arrival-rate` = \( \lambda \).  
+  - `mean-service-time` = tiempo medio de servicio = \( 1 / \mu \).  
+
+Por lo tanto, si quieres una tasa de servicio de \( \mu = 5 \), debes fijar `mean-service-time = 1/5 = 0.2`.
+
+---
+
+### Escenario 1. Baja carga (λ = 0.1, ρ = 0.02)
+Cálculo:  
+- \( \rho = \lambda / \mu = 0.1 / 5 = 0.02 \).  
+- Entonces \( \mu = 5 \) y `mean-service-time = 1 / μ = 0.2`.
+
+- **Parámetros en NetLogo**:  
+  - number-of-servers = **1**  
+  - mean-arrival-rate = **0.1**  
+  - mean-service-time = **0.2**  
+  - max-run-time = **300000**  
+  - stats-reset-time = **5000**
+
+- **Valores teóricos esperados**:  
+  - P₀ ≈ 0.981  
+  - Pₖ ≈ 0.000  
+  - λ_eff ≈ 0.100  
+  - Nₛ ≈ 0.020  
+  - Nw ≈ 0.001  
+  - Ts ≈ 0.200  
+  - Tw ≈ 0.010  
+
+---
+
+### Escenario 2. Carga media (λ = 1, ρ = 0.2)
+Cálculo:  
+- \( \rho = \lambda / \mu = 1 / 5 = 0.2 \).  
+- Entonces \( \mu = 5 \) y `mean-service-time = 0.2`.
+
+- **Parámetros en NetLogo**:  
+  - number-of-servers = **1**  
+  - mean-arrival-rate = **1.0**  
+  - mean-service-time = **0.2**  
+  - max-run-time = **300000**  
+  - stats-reset-time = **5000**
+
+- **Valores teóricos esperados**:  
+  - P₀ ≈ 0.834  
+  - Pₖ ≈ 1.07 × 10⁻⁷  
+  - λ_eff ≈ 1.0  
+  - Nₛ ≈ 0.25  
+  - Nw ≈ 0.084  
+  - Ts ≈ 0.25  
+  - Tw ≈ 0.084  
+
+---
+
+### Escenario 3. Alta carga (λ = 2, ρ = 0.4)
+Cálculo:  
+- \( \rho = \lambda / \mu = 2 / 5 = 0.4 \).  
+- Entonces \( \mu = 5 \) y `mean-service-time = 0.2`.
+
+- **Parámetros en NetLogo**:  
+  - number-of-servers = **1**  
+  - mean-arrival-rate = **2.0**  
+  - mean-service-time = **0.2**  
+  - max-run-time = **300000**  
+  - stats-reset-time = **5000**
+
+- **Valores teóricos esperados**:  
+  - P₀ ≈ 0.600  
+  - Pₖ ≈ 1.58 × 10⁻⁴  
+  - λ_eff ≈ 2.0  
+  - Nₛ ≈ 0.67  
+  - Nw ≈ 0.27  
+  - Ts ≈ 0.33  
+  - Tw ≈ 0.13  
+
+---
+
+### Qué observar en la interfaz
+
+En la parte inferior de la GUI aparecen los monitores principales:  
+
+- **Avg. Queue Len** ≈ Nw (número medio en cola).  
+- **Avg. Time in Q** ≈ Tw (tiempo medio en cola).  
+- **Avg. Time in Sys** ≈ Ts (tiempo medio en el sistema).  
+- **Server Utilization** ≈ ρ (utilización del servidor).  
+- **Avg. Queue Len + Server Utilization** ≈ Ns (número medio en sistema).  
+
+Estos resultados simulados pueden compararse con los valores teóricos esperados para validar el modelo.
