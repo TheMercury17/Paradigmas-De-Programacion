@@ -181,6 +181,7 @@ Cálculo:
   - $Ts ≈ 0.200$  
   - $Tw ≈ 0.010$
 
+![Escenario 1. Baja carga](Escenario1.png)
 <img width="921" height="551" alt="Escenario 1. Baja carga" src="texto" />
 
 ---
