@@ -3,7 +3,7 @@
 ## Autor  
 **Andrés Sebastián Coral Vallejo.** 
 
-## 1) Modelo matemático (estado estacionario)
+## 1) Modelo matemático
 
 **Definiciones:**
 
@@ -12,41 +12,28 @@
 - K = capacidad total del sistema (incluye el que está en servicio).
 - ρ = λ / μ.
 
-**Probabilidades en estado estacionario:**
+**Planteamientos de calculo**
 
-- Si ρ ≠ 1:
+1. **Probabilidad de 0 clientes**  
+$P_0 = \frac{1 - \rho}{1 - \rho^{K+1}}, \quad (\rho \neq 1)$
 
-$p_0 = \frac{1-\rho}{1-\rho^{K+1}}, \quad p_n = p_0 \rho^n, \quad n=0,\dots,K$
+2. **Probabilidad estado n**  
+$P_n = P_0 \cdot \rho^n, \quad n = 0,1,\dots,K$
 
-- Si ρ = 1:
+3. **Probabilidad de bloqueo**  
+$P_K = P_0 \cdot \rho^K$
 
-$p_n = \frac{1}{K+1}, \quad n=0,\dots,K$
+4. **Tasa de llegada efectiva**  
+$\lambda_{eff} = \lambda \cdot (1 - P_K)$
 
-**Probabilidad de bloqueo (sistema lleno):**
+5. **Número medio en el sistema**  
+$N_s = \frac{\rho \, \left( 1 - (K+1)\rho^K + K\rho^{K+1} \right)}{(1-\rho)(1-\rho^{K+1})}, \quad (\rho \neq 1)$
 
-$p_K = p_0 \rho^K$
+6. **Número medio en cola**  
+$N_w = N_s - (1 - P_0)$
 
-**Rendimiento efectivo (throughput):**
-
-$\lambda_{\mathrm{eff}} = \lambda (1 - p_K)$
-
-**Número medio en el sistema (N_S):**
-
-- Si ρ ≠ 1:
-
-$L = \frac{\rho \bigl(1-(K+1)\rho^K + K\rho^{K+1}\bigr)}{(1-\rho)(1-\rho^{K+1})}$
-
-- Si ρ = 1:
-
-$L = \frac{K}{2}$
-
-**Número medio en cola (N_w):**
-
-$L_q = L - (1 - p_0)$
-
-**Tiempos medios (Little):**
-
-$T_S = W = \frac{L}{\lambda_{\mathrm{eff}}}, \quad T_w = W_q = \frac{L_q}{\lambda_{\mathrm{eff}}}$
+7. **Tiempos promedio (Little)**  
+$T_s = \frac{N_s}{\lambda_{eff}}, \qquad T_w = \frac{N_w}{\lambda_{eff}}$
 
 
 ---
