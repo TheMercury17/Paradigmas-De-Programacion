@@ -146,23 +146,21 @@ Para replicar los resultados teóricos en la interfaz de NetLogo (`Discrete_Even
 ### Recordatorio importante
 - En teoría de colas, el **factor de utilización** se define como:  
 
-$rho = \frac{\lambda}{\mu}$
-
+$ρ = \frac{\lambda}{\mu}$
 donde:  
   - $\lambda% = tasa de llegadas (arrivals por tick).  
   - $\mu$ = tasa de servicio (clientes por tick).  
 
 - En NetLogo:  
-  - `mean-arrival-rate` = \( \lambda \).  
-  - `mean-service-time` = tiempo medio de servicio = \( 1 / \mu \).  
+  - `mean-arrival-rate` = $\lambda$ 
+  - `mean-service-time` = tiempo medio de servicio = $( 1 / \mu \)$  
 
-Por lo tanto, si quieres una tasa de servicio de \( \mu = 5 \), debes fijar `mean-service-time = 1/5 = 0.2`.
-
----
+Por lo tanto, para calcular una tasa de servicio de $\mu = 5$, se debe fijar `mean-service-time = 1/5 = 0.2`.
+En ese orden de ideas se plantearon los escenarios del 1 al 3 en NetLogo.
 
 ### Escenario 1. Baja carga (λ = 0.1, ρ = 0.02)
 Cálculo:  
-- \( \rho = \lambda / \mu = 0.1 / 5 = 0.02 \).  
+- $\rho = \lambda / \mu = 0.1 / 5 = 0.02$  
 - Entonces \( \mu = 5 \) y `mean-service-time = 1 / μ = 0.2`.
 
 - **Parámetros en NetLogo**:  
