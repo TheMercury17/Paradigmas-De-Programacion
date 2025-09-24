@@ -20,47 +20,33 @@ $p_0 = \frac{1-\rho}{1-\rho^{K+1}}, \quad p_n = p_0 \rho^n, \quad n=0,\dots,K.$
 
 - Si ρ = 1:
 
-\[
-p_n = \frac{1}{K+1}, \quad n=0,\dots,K.
-\]
+$p_n = \frac{1}{K+1}, \quad n=0,\dots,K.$
 
 **Probabilidad de bloqueo (sistema lleno):**
 
-\[
-p_K = p_0 \rho^K.
-\]
+$p_K = p_0 \rho^K.$
 
 **Rendimiento efectivo (throughput):**
 
-\[
-\lambda_{\mathrm{eff}} = \lambda (1 - p_K).
-\]
+$\lambda_{\mathrm{eff}} = \lambda (1 - p_K).$
 
 **Número medio en el sistema (N_S):**
 
 - Si ρ ≠ 1:
 
-\[
-L = \frac{\rho \bigl(1-(K+1)\rho^K + K\rho^{K+1}\bigr)}{(1-\rho)(1-\rho^{K+1})}.
-\]
+$L = \frac{\rho \bigl(1-(K+1)\rho^K + K\rho^{K+1}\bigr)}{(1-\rho)(1-\rho^{K+1})}.$
 
 - Si ρ = 1:
 
-\[
-L = \frac{K}{2}.
-\]
+$L = \frac{K}{2}.$
 
 **Número medio en cola (N_w):**
 
-\[
-L_q = L - (1 - p_0).
-\]
+$L_q = L - (1 - p_0).$
 
 **Tiempos medios (Little):**
 
-\[
-T_S = W = \frac{L}{\lambda_{\mathrm{eff}}}, \quad T_w = W_q = \frac{L_q}{\lambda_{\mathrm{eff}}}.
-\]
+$T_S = W = \frac{L}{\lambda_{\mathrm{eff}}}, \quad T_w = W_q = \frac{L_q}{\lambda_{\mathrm{eff}}}.$
 
 
 ---
