@@ -141,7 +141,15 @@ Para replicar los resultados teóricos en la interfaz de NetLogo (`Discrete_Even
 
 - **number-of-servers** = 1 (M/M/1)  
 - **max-run-time** = 340000 (para estabilidad estadística)  
-- **stats-reset-time** = 5000 (para descartar transitorio inicial)  
+- **stats-reset-time** = 5000 (para descartar transitorio inicial)
+
+Así mismo se definen los campos inferiores del simulador:
+
+- Avg. Queue Len ≈ Nw (usuarios promedio en cola)
+- Avg. Time in Q ≈ Tw (tiempo medio en cola)
+- Avg. Time in Sys ≈ Ts (tiempo medio en el sistema)
+- Server Utilization ≈ ρ (también = Ns en promedio si hay un solo servidor)
+- Avg. Queue Len + Server Utilization ≈ Ns (número total en sistema)  
 
 ### Recordatorio importante
 - En teoría de colas, el **factor de utilización** se define como:  
@@ -181,7 +189,32 @@ Cálculo:
   - $Ts ≈ 0.200$  
   - $Tw ≈ 0.010$
 
+  - **Valores simulados**:  
+  - $P₀ ≈ 0.981$ 
+  - $Pₖ ≈ 0.000$  
+  - $λ_eff ≈ 0.100$  
+  - $Nₛ ≈ 0.021$  
+  - $Nw ≈ 4.387e^-040$  
+  - $Ts ≈ 0.205$  
+  - $Tw ≈ 0.004$
+
 ![Escenario 1. Baja carga](Escenario1.png)
+
+### Escenario 1 — Baja carga (λ = 0.1, ρ = 0.02)
+
+| Métrica | Teórico | Simulado | Error relativo (%) |
+|---------|---------|----------|---------------------|
+| P₀      | 0.981   | 0.981    | 0.00%              |
+| Pₖ      | 0.000   | 0.000    | 0.00%              |
+| λ_eff   | 0.100   | 0.100    | 0.00%              |
+| Nₛ      | 0.020   | 0.021    | 5.00%              |
+| Nw      | 0.001   | ~0       | ~100% (valor muy pequeño, prácticamente nulo en ambos casos) |
+| Ts      | 0.200   | 0.205    | 2.50%              |
+| Tw      | 0.010   | 0.004    | 60.00% (valores muy pequeños, diferencia poco significativa en la práctica) |
+
+**Análisis:**  
+En condiciones de baja carga, el sistema se mantiene casi vacío (ρ ≈ 0.02), con probabilidad de bloqueo nula y tasa efectiva igual a la de llegada. Los resultados simulados coinciden casi exactamente con los valores teóricos: las diferencias en Ns y Ts son menores al 5%. En Nw y Tw se observan errores relativos altos, pero esto se debe a que sus valores absolutos son extremadamente pequeños (del orden de milésimas), por lo que incluso ligeras variaciones generan porcentajes grandes sin impacto real. En conjunto, la simulación valida muy bien el modelo teórico en este escenario.
+
 
 ---
 
@@ -205,6 +238,15 @@ Cálculo:
   - $Nw ≈ 0.084$  
   - $Ts ≈ 0.25$  
   - $Tw ≈ 0.084$  
+
+- **Valores simulados**:
+  - $P₀ ≈ 0.834$  
+  - $Pₖ ≈ 1.07 × 10⁻⁷$  
+  - $λ_eff ≈ 1.0$  
+  - $Nₛ ≈ 20.068$  
+  - $Nw ≈ 0.05$  
+  - $Ts ≈ 0.251$  
+  - $Tw ≈ 0.05$  
 
 ![Escenario 2. Carga media](Escenario2.png)
 
@@ -231,4 +273,13 @@ Cálculo:
   - $Ts ≈ 0.33$  
   - $Tw ≈ 0.13$  
 
+- **Valores simulados**:  
+  - $P₀ ≈ 0.600$  
+  - $Pₖ ≈ 1.58 × 10⁻⁴$  
+  - $λ_eff ≈ 2.0$  
+  - $Nₛ ≈ 40.016$  
+  - $Nw ≈ 0.266$  
+  - $Ts ≈ 0.332$  
+  - $Tw ≈ 0.132$
+    
 ![Escenario 3. Alta carga](Escenario3.png)
