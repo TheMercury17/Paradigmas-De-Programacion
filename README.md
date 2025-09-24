@@ -189,7 +189,7 @@ Cálculo:
   - $Ts ≈ 0.200$  
   - $Tw ≈ 0.010$
 
-  - **Valores simulados**:  
+- **Valores simulados**:  
   - $P₀ ≈ 0.981$ 
   - $Pₖ ≈ 0.000$  
   - $λ_eff ≈ 0.100$  
@@ -200,7 +200,7 @@ Cálculo:
 
 ![Escenario 1. Baja carga](Escenario1.png)
 
-### Escenario 1 — Baja carga (λ = 0.1, ρ = 0.02)
+#### Escenario 1 — Baja carga (λ = 0.1, ρ = 0.02)
 
 | Métrica | Teórico | Simulado | Error relativo (%) |
 |---------|---------|----------|---------------------|
@@ -208,9 +208,9 @@ Cálculo:
 | Pₖ      | 0.000   | 0.000    | 0.00%              |
 | λ_eff   | 0.100   | 0.100    | 0.00%              |
 | Nₛ      | 0.020   | 0.021    | 5.00%              |
-| Nw      | 0.001   | ~0       | ~100% (valor muy pequeño, prácticamente nulo en ambos casos) |
-| Ts      | 0.200   | 0.205    | 2.50%              |
-| Tw      | 0.010   | 0.004    | 60.00% (valores muy pequeños, diferencia poco significativa en la práctica) |
+| Nw      | 0.001   | ~0       | ~100%  (valor muy pequeño, prácticamente nulo en ambos casos)             | 
+| Tₛ      | 0.200   | 0.205    | 2.50%              |
+| T_w     | 0.010   | 0.004    | 60.00%  (valores muy pequeños, diferencia poco significativa en la práctica)           | 
 
 **Análisis:**  
 En condiciones de baja carga, el sistema se mantiene casi vacío (ρ ≈ 0.02), con probabilidad de bloqueo nula y tasa efectiva igual a la de llegada. Los resultados simulados coinciden casi exactamente con los valores teóricos: las diferencias en Ns y Ts son menores al 5%. En Nw y Tw se observan errores relativos altos, pero esto se debe a que sus valores absolutos son extremadamente pequeños (del orden de milésimas), por lo que incluso ligeras variaciones generan porcentajes grandes sin impacto real. En conjunto, la simulación valida muy bien el modelo teórico en este escenario.
@@ -250,6 +250,22 @@ Cálculo:
 
 ![Escenario 2. Carga media](Escenario2.png)
 
+#### Escenario 2 — Carga media (λ = 1, ρ = 0.2)
+
+| Métrica | Teórico    | Simulado  | Error relativo (%) |
+|---------|:----------:|:---------:|-------------------:|
+| P₀      | 0.834      | 0.834     | 0.00%              |
+| Pₖ      | 1.07e-7    | 1.07e-7   | 0.00%              |
+| λ_eff   | 1.000      | 1.000     | 0.00%              |
+| Nₛ      | 0.250      | 20.068    | 7927.20%           |
+| Nw      | 0.084      | 0.050     | −40.48%            |
+| Tₛ      | 0.250      | 0.251     | 0.40%              |
+| T_w     | 0.084      | 0.050     | −40.48%            |
+
+**Análisis:**  
+P₀, Pₖ y λ_eff coinciden prácticamente con la teoría y Tₛ también muestra una excelente concordancia (error ≈ 0.4%), lo que indica que la tasa efectiva y el tiempo medio global se están midiendo correctamente. Sin embargo, hay dos discrepancias importantes: por un lado Nw y Tw son menores que lo esperado (~−40%), lo que puede venir de muestreo insuficiente en la cola (valores pequeños, sensibilidad estadística) o de cómo se calcula exactamente el promedio en el reporter; por otro lado Nₛ tiene una desviación gigantesca (≈ 7927%), lo cual no es ruido aleatorio sino un síntoma de error sistemático — por ejemplo, confundir la **media del tiempo de servicio** con la **tasa** (es decir poner `mean-service-time = μ` en lugar de `1/μ`), usar un monitor que devuelve una **suma acumulada** en vez de un **promedio temporal**, o no aplicar correctamente el `stats-reset-time` (incluyendo transitorio).  
+
+
 ---
 
 ### Escenario 3. Alta carga (λ = 2, ρ = 0.4)
@@ -283,3 +299,19 @@ Cálculo:
   - $Tw ≈ 0.132$
     
 ![Escenario 3. Alta carga](Escenario3.png)
+
+#### Escenario 3 — Alta carga (λ = 2, ρ = 0.4)
+
+| Métrica | Teórico    | Simulado  | Error relativo (%) |
+|---------|:----------:|:---------:|-------------------:|
+| P₀      | 0.600      | 0.600     | 0.00%              |
+| Pₖ      | 1.58e-4    | 1.58e-4   | 0.00%              |
+| λ_eff   | 2.000      | 2.000     | 0.00%              |
+| Nₛ      | 0.670      | 40.016    | 5874.78%           |
+| Nw      | 0.270      | 0.266     | −1.48%             |
+| Tₛ      | 0.330      | 0.332     | 0.61%              |
+| T_w     | 0.130      | 0.132     | 1.54%              |
+
+**Análisis:**  
+En este escenario de alta carga, la teoría y la simulación coinciden casi perfectamente en P₀, Pₖ y λ_eff, confirmando que el modelo reproduce bien la probabilidad de vacío, la probabilidad de bloqueo y la tasa efectiva. También Nw, Tw y Ts se ajustan muy bien (errores < 2%), lo que valida el cálculo de tiempos de espera y de permanencia en el sistema. Sin embargo, Nₛ vuelve a mostrar una discrepancia crítica: el valor simulado (≈ 40) es enormemente superior al esperado (0.67). Tal como ocurrió en el escenario anterior, esta diferencia apunta a un problema de configuración o de reporter: probablemente el monitor de Nₛ esté acumulando clientes en lugar de promediar sobre el tiempo, o bien se ingresó un valor incorrecto de `mean-service-time` (μ confundido con 1/μ). Aun así, los tiempos y colas concuerdan con la teoría, lo que indica que la dinámica básica del sistema está siendo simulada correctamente y que la anomalía de Nₛ se debe a la forma de medir, no al comportamiento del modelo.
+
