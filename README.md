@@ -179,7 +179,9 @@ Cálculo:
   - $Nₛ ≈ 0.020$  
   - $Nw ≈ 0.001$  
   - $Ts ≈ 0.200$  
-  - $Tw ≈ 0.010$  
+  - $Tw ≈ 0.010$
+
+<img width="921" height="551" alt="Escenario 1. Baja carga" src="texto" />
 
 ---
 
@@ -204,6 +206,8 @@ Cálculo:
   - $Ts ≈ 0.25$  
   - $Tw ≈ 0.084$  
 
+<img width="921" height="551" alt="Escenario 2. Carga media" src="texto" />
+
 ---
 
 ### Escenario 3. Alta carga (λ = 2, ρ = 0.4)
@@ -226,3 +230,5 @@ Cálculo:
   - $Nw ≈ 0.27$  
   - $Ts ≈ 0.33$  
   - $Tw ≈ 0.13$  
+
+<img width="921" height="551" alt="Escenario 3. Alta carga" src="texto" />
