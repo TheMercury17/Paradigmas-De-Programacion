@@ -17,22 +17,22 @@
 1. *Probabilidad de 0 clientes*  
 $P_0 = \frac{1 - \rho}{1 - \rho^{K+1}}, \quad (\rho \neq 1)$
 
-2. **Probabilidad estado n**  
+2. *Probabilidad estado n*  
 $P_n = P_0 \cdot \rho^n, \quad n = 0,1,\dots,K$
 
-3. **Probabilidad de bloqueo**  
+3. *Probabilidad de bloqueo*  
 $P_K = P_0 \cdot \rho^K$
 
-4. **Tasa de llegada efectiva**  
+4. *Tasa de llegada efectiva*  
 $\lambda_{eff} = \lambda \cdot (1 - P_K)$
 
-5. **Número medio en el sistema**  
+5. *Número medio en el sistema*  
 $N_s = \frac{\rho \, \left( 1 - (K+1)\rho^K + K\rho^{K+1} \right)}{(1-\rho)(1-\rho^{K+1})}, \quad (\rho \neq 1)$
 
-6. **Número medio en cola**  
+6. *Número medio en cola*  
 $N_w = N_s - (1 - P_0)$
 
-7. **Tiempos promedio (Little)**  
+7. *Tiempos promedio (Little)*  
 $T_s = \frac{N_s}{\lambda_{eff}}, \qquad T_w = \frac{N_w}{\lambda_{eff}}$
 
 
