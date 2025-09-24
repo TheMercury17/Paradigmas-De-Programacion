@@ -12,9 +12,9 @@
 - K = capacidad total del sistema (incluye el que está en servicio).
 - ρ = λ / μ.
 
-**Planteamientos de calculo**
+**Planteamientos de calculo:**
 
-1. **Probabilidad de 0 clientes**  
+1. *Probabilidad de 0 clientes*  
 $P_0 = \frac{1 - \rho}{1 - \rho^{K+1}}, \quad (\rho \neq 1)$
 
 2. **Probabilidad estado n**  
