@@ -5,10 +5,10 @@
 
 ---
 
-- 1) Algoritmo de número primo.
-- 2) Algoritmo de Euclides `Maximo común divisor (#1,#2)`
-- 3) Algoritmo factorial.
-- 4) Algoritmo de busqueda en profundidad `(DFS)`
+- Algoritmo de número primo.
+- Algoritmo de Euclides `Maximo común divisor (#1,#2)`
+- Algoritmo factorial.
+- Algoritmo de busqueda en profundidad `(DFS)`
 
 ---
 
@@ -172,4 +172,5 @@ Inicio `1` → recorrido: **1 2 4 5 3 6**
 * Grafo desconectado: sólo recorre una componente.
 * Ciclos: se evitan con `visitados`.
 * Profundidad muy grande: usar versión iterativa.
+
 
