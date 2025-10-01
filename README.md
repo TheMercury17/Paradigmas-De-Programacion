@@ -68,13 +68,13 @@ A mayores carats, la diferencia entre modelos crece (la pendiente mayor del mode
 ### D) Gráficas y archivos generados.
 
 <div align="center">
-#### - scatter (train/test) + recta de regresión (dataset real)
+    <strong>SCATTER (TRAIN/TEST) + RECTA DE REGRESIÓN (DATASET REAL)</strong>
 </div>
 
 ![scatter (train/test) + recta de regresión (dataset real)](diamonds_carat_price_regression.png)
 
 <div align="center">
-#### - Scatter del toy (script manual) con recta.
+    <strong>SCATTER DEL TOY (SCRIPT MANUAL) CON RECTA.</strong>
 </div>
 
 ![scatter del toy (script manual) con recta.](carat_vs_price_test_scatter.png)
@@ -82,6 +82,7 @@ A mayores carats, la diferencia entre modelos crece (la pendiente mayor del mode
 ---
 ## 2) Diseño de modelo de Machine Learning para regresión lineal (Orientado a objetos).
 ---
+
 
 
 
