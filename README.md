@@ -90,3 +90,6 @@ A mayores carats, la diferencia entre modelos crece (la pendiente mayor del mode
 
 
 
+
+
+
