@@ -1,18 +1,7 @@
-# Quiz 26/09/2025 - Sistema de gestión de inventarios.
+# Ejercicio en clase 01/10/2025 .
 
 ## Autor  
 **Andrés Sebastián Coral Vallejo.** 
-
----
-
-## ACLARACIÓN IMPORTANTE:
-
-Una disculpa por mi ausencia el día de hoy, me encontraba en `revisión` de un hemograma que me habian tomado hace unos días, por lo que durante la clase me encontraba en el Dispensario Norte de Sanidad Militar. Pese a estar en estos requerimientos médicos, me encontraba al tanto de la clase y del grupo de Teams, por lo que aquí está mi entrega.
-En cualquier caso y con el proposito de demostrar de lo que hablo (Ya que por la revisión no tengo excusa médica) anexaré aquí tambien el pdf con mis resultados médicos.
-
-Agradezco mucho su comprensión, le deseo un excelente día.
-
----
 
 ### El programa tiene la capacidad de:
 - Mostrar: cantidad, precio por ítem y el precio total.
@@ -88,6 +77,7 @@ Cada opción del menú llama a una función que implementa la interacción:
 ### 6. **Helpers**
 - `formatMoney()`: da formato uniforme a precios (`2 decimales`).  
 - `shorten()`: acorta nombres largos para que encajen en la tabla.  
+
 
 
 
