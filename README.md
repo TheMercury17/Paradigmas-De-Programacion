@@ -6,7 +6,7 @@
 El ejercicio de hoy tomó en consideración a [Grokking-Artificial-Intelligence](https://github.com/rishal-hurbans/Grokking-Artificial-Intelligence-Algorithms/tree/master/ch08-machine_learning) como nos indicó el profesor.
 
 ---
-## Comparación de los resultados entre `ml_linear_regression.py` y `ml_scikitlearn_linear_regression.py`.
+## 1) Comparación de los resultados entre `ml_linear_regression.py` y `ml_scikitlearn_linear_regression.py`.
 ---
 
 ### A) Modelo manual (archivo ml_linear_regression.py) — dataset pequeño del script
@@ -67,13 +67,19 @@ A mayores carats, la diferencia entre modelos crece (la pendiente mayor del mode
 
 ### D) Gráficas y archivos generados.
 
-![scatter (train/test) + recta de regresión (dataset real)](diamonds_carat_price_regression.png)
+<div align="center">
 scatter (train/test) + recta de regresión (dataset real)
+</div>
+![scatter (train/test) + recta de regresión (dataset real)](diamonds_carat_price_regression.png)
 
-
-![scatter del toy (script manual) con recta.](carat_vs_price_test_scatter.png)
+<div align="center">
 Scatter del toy (script manual) con recta.
+</div>
+![scatter del toy (script manual) con recta.](carat_vs_price_test_scatter.png)
 
+---
+## 2) Diseño de modelo de Machine Learning para regresión lineal (Orientado a objetos).
+---
 
 
 
