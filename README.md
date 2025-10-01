@@ -37,8 +37,9 @@ Regresión lineal (prediciendo price desde carat):
  - $MSE (test) = 2,394,423.8479396133.$
  - $R² (test) = 0.8488493110150753 (≈ 0.849).$
 
-Observación: Si se re-entrena una versión con carat*1000 para comprobar la escala, se observa que El R² y MSE permanecen iguales;
-la pendiente cambia por el factor de escala (como era de esperarse): pendiente ≈ 7.7911 cuando el input es $carat*1000$ (esto concuerda matemáticamente con la versión sin escalar).
+Observación: Si se re-entrena una versión con $carat * 1000$ para comprobar la escala, se observa que El R² y MSE permanecen iguales;
+la pendiente cambia por el factor de escala (como era de esperarse): pendiente ≈ 7.7911 cuando el input es $carat * 1000$ (esto concuerda matemáticamente con la versión sin escalar).
+
 
 
 
