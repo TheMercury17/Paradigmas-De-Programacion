@@ -23,7 +23,7 @@ Los proyectos desarrollados incluyen:
 El sistema de perceptrón basado en agentes implementa una arquitectura modular donde cada componente cumple un rol específico en el proceso de aprendizaje automático. La arquitectura se fundamenta en tres tipos principales de agentes que interactúan dentro del framework Mesa para simular el comportamiento de una red neuronal simple.
 
 <p align="center">
-  <img src="Imagenes/PerceptronUML.png" />
+  <img src="Imagenes/PerceptronFlujo.png" />
 </p>
 
 Arquitectura del sistema de perceptrón basado en agentes
