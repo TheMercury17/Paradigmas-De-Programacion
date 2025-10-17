@@ -14,12 +14,13 @@ Los proyectos desarrollados incluyen:
 - (3) una calculadora científica
 
 ***
+### Requerimientos previos: `pip install mesa==0.8.9 numpy matplotlib tk`
 
 ## 1. Modelamiento de un Perceptrón usando el Paradigma de Agentes
 
 ### 1.1 Diseño Arquitectónico del Sistema
 
-El sistema de perceptrón basado en agentes implementa una arquitectura modular donde cada componente cumple un rol específico en el proceso de aprendizaje automático. La arquitectura se fundamenta en tres tipos principales de agentes que interactúan dentro del framework Mesa para simular el comportamiento de una red neuronal simple.[^2]
+El sistema de perceptrón basado en agentes implementa una arquitectura modular donde cada componente cumple un rol específico en el proceso de aprendizaje automático. La arquitectura se fundamenta en tres tipos principales de agentes que interactúan dentro del framework Mesa para simular el comportamiento de una red neuronal simple.
 
 ![Arquitectura del sistema de perceptrón basado en agentes](https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/764475a09eb25e1e4a0e79691d7b2f2c/023394fd-e1eb-4f9e-b79f-2edb06890de1/afb56f12.png)
 
