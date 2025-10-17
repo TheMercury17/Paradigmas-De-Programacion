@@ -171,7 +171,7 @@ El sistema rastrea métricas de desempeño incluyendo el número total de mensaj
 
 ## 3. Implementación de una Calculadora Científica usando el Paradigma de Objetos en Kotlin
 
-![Interfaz gráfica de la calculadora](CalculadoraInterfaz.png)
+![Interfaz gráfica de la calculadora](Imagenes/CalculadoraInterfaz.png)
 
 ***
 
