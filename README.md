@@ -177,6 +177,10 @@ El sistema de calculadora científica en Kotlin implementa una arquitectura robu
 
 La **jerarquía de clases** establece una clase base `MaquinaCalculadoraBasica` que encapsula las operaciones aritméticas fundamentales y la gestión de memoria, mientras que `SistemCalculoCientifico` extiende estas funcionalidades incorporando operaciones matemáticas avanzadas como funciones trigonométricas, logarítmicas y exponenciales.
 
+<p align="center">
+  <img src="Imagenes/CalculadoraUML.png" />
+</p>
+
 ### 3.2 Clase Base: MaquinaCalculadoraBasica
 
 #### 3.2.1 Operaciones Aritméticas Fundamentales
@@ -247,7 +251,9 @@ La clase `AnalizadorExpresiones` implementa un **parser recursivo descendente** 
 2. **Nivel intermedio**: Multiplicaciones y divisiones (`analizarTerminoMultiplicativo`)
 3. **Nivel inferior**: Factores elementales y funciones (`analizarFactorElemental`)
 
-![CalculoSencillo](Imagenes/CalculoSencillo.png)
+<p align="center">
+  <img src="Imagenes/CalculoSencillo.png" />
+</p>
 
 #### 3.4.2 Manejo de Funciones Matemáticas
 
@@ -264,7 +270,9 @@ return when (identificadorFuncion.lowercase()) {
 }
 ```
 
-![CalculoComplejo](Imagenes/CalculoComplejo.png)
+<p align="center">
+  <img src="Imagenes/CalculoComplejo.png" />
+</p>
 
 ### 3.5 Sistema de Interfaz de Usuario
 
@@ -298,7 +306,9 @@ El sistema implementa una **jerarquía de excepciones** especializada que hereda
 
 #### 3.7.1 Calculadora Científica HTML
 
-![Interfaz gráfica de la calculadora](Imagenes/CalculadoraInterfaz.png)
+<p align="center">
+  <img src="Imagenes/CalculadoraInterfaz.png" />
+</p>
 
 El sistema incluye una **interfaz web complementaria** implementada en HTML, CSS y JavaScript que proporciona:
 - Diseño responsivo compatible con dispositivos móviles
