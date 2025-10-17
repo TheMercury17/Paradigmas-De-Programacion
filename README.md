@@ -87,6 +87,28 @@ Simulación del perceptrón en entrenamiento con puntos de datos y frontera de d
 
 El sistema implementa múltiples métricas de evaluación del aprendizaje. El **error de clasificación total** se calcula como la suma de errores absolutos en cada época. La **convergencia** se determina cuando el error total alcanza cero o se alcanza el número máximo de iteraciones. Adicionalmente, el sistema rastrea la evolución de los pesos y el sesgo, proporcionando información detallada sobre la dinámica del aprendizaje.
 
+
+### 1.6 Capturas de pantalla del perceptrón en funcionamiento.
+
+Perceptrón - Epoca 2
+<p align="center">
+  <img src="Imagenes/PerceptronEpoca2.jpeg" />
+</p>
+
+Perceptrón - Epoca 3
+<p align="center">
+  <img src="Imagenes/PerceptronEpoca3.jpeg" />
+</p>
+
+Perceptrón - Epoca 11
+<p align="center">
+  <img src="Imagenes/PerceptronEpoca11.jpeg" />
+</p>
+
+Perceptrón - Epoca 17
+<p align="center">
+  <img src="Imagenes/PerceptronEpoca17.jpeg" />
+</p>
 ***
 
 ## 2. Implementación de una Calculadora Basada en el Paradigma de Agentes
