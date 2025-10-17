@@ -171,6 +171,141 @@ El sistema rastrea métricas de desempeño incluyendo el número total de mensaj
 
 ## 3. Implementación de una Calculadora Científica usando el Paradigma de Objetos en Kotlin
 
+### 3.1 Arquitectura Orientada a Objetos
+
+El sistema de calculadora científica en Kotlin implementa una arquitectura robusta basada en los principios fundamentales de la programación orientada a objetos: **encapsulación**, **herencia**, **polimorfismo** y **abstracción**. El diseño arquitectónico se estructura mediante una jerarquía de clases bien definida que permite la extensibilidad y mantenibilidad del código.
+
+La **jerarquía de clases** establece una clase base `MaquinaCalculadoraBasica` que encapsula las operaciones aritméticas fundamentales y la gestión de memoria, mientras que `SistemCalculoCientifico` extiende estas funcionalidades incorporando operaciones matemáticas avanzadas como funciones trigonométricas, logarítmicas y exponenciales.
+
+### 3.2 Clase Base: MaquinaCalculadoraBasica
+
+#### 3.2.1 Operaciones Aritméticas Fundamentales
+
+La clase `MaquinaCalculadoraBasica` implementa las cuatro operaciones aritméticas básicas con **sobrecarga de métodos** para manejar tanto números enteros como de punto flotante. La implementación incluye validaciones robustas, especialmente para la división por cero, utilizando tolerancia numérica para detectar divisores prácticamente nulos.
+
+```kotlin
+open fun efectuarDivision(primerOperando: Double, segundoOperando: Double): Double {
+    if (abs(segundoOperando) < 1e-10) throw ErrorDivisionCero()
+    val valorResultado = primerOperando / segundoOperando
+    almacenarOperacion("$primerOperando / $segundoOperando = $valorResultado")
+    return valorResultado
+}
+```
+
+#### 3.2.2 Sistema de Gestión de Memoria
+
+El sistema incorpora un **registro de memoria** completo que permite almacenar, recuperar, incrementar y decrementar valores. Las operaciones de memoria incluyen:
+- `almacenarEnMemoria(valor)`: Guarda un valor en el registro
+- `recuperarDeMemoria()`: Obtiene el valor almacenado
+- `incrementarMemoria(valor)`: Suma al valor en memoria
+- `decrementarMemoria(valor)`: Resta del valor en memoria
+- `reiniciarMemoria()`: Establece la memoria en cero
+
+#### 3.2.3 Historial de Operaciones
+
+El sistema mantiene un **registro cronológico** automático de todas las operaciones realizadas, limitado a 100 entradas para optimizar el uso de memoria. Cada entrada incluye timestamp y descripción completa de la operación ejecutada.
+
+### 3.3 Clase Derivada: SistemCalculoCientifico
+
+#### 3.3.1 Funciones Trigonométricas Avanzadas
+
+La clase `SistemCalculoCientifico` implementa un conjunto completo de funciones trigonométricas con **conversión automática** entre sistemas de medición angular (radianes/grados). Las funciones incluyen validaciones específicas para evitar cálculos en singularidades:
+
+```kotlin
+fun calcularTangente(valorAngular: Double): Double {
+    val anguloEnRadianes = if (utilizaRadianes) valorAngular else Math.toRadians(valorAngular)
+    val valorCoseno = cos(anguloEnRadianes)
+    if (abs(valorCoseno) < 1e-10) {
+        throw ErrorValorInvalido("Tangente indefinida para $valorAngular")
+    }
+    val valorResultado = tan(anguloEnRadianes)
+    almacenarOperacion("tan($valorAngular) = $valorResultado")
+    return valorResultado
+}
+```
+
+#### 3.3.2 Funciones Logarítmicas y Exponenciales
+
+El sistema incorpora funciones logarítmicas en base 10 y natural (neperiana), así como la función exponencial. Todas las implementaciones incluyen **validaciones de dominio** para garantizar argumentos válidos y **control de desbordamiento** para evitar resultados infinitos.
+
+#### 3.3.3 Operaciones Matemáticas Especializadas
+
+La calculadora implementa operaciones avanzadas incluyendo:
+- **Exponenciación** con validación de resultados indefinidos
+- **Raíz cuadrada** con verificación de dominio real
+- **Factorial** con límites computacionales hasta 170
+- **Valor absoluto** para distancia respecto al origen
+- **Conversiones angulares** entre radianes y grados
+
+### 3.4 Analizador Sintáctico: AnalizadorExpresiones
+
+#### 3.4.1 Parser Recursivo Descendente
+
+La clase `AnalizadorExpresiones` implementa un **parser recursivo descendente** que respeta la precedencia de operadores matemáticos. El analizador procesa expresiones complejas mediante tres niveles de precedencia:
+
+1. **Nivel superior**: Sumas y restas (`analizarExpresionCompleta`)
+2. **Nivel intermedio**: Multiplicaciones y divisiones (`analizarTerminoMultiplicativo`)
+3. **Nivel inferior**: Factores elementales y funciones (`analizarFactorElemental`)
+
+#### 3.4.2 Manejo de Funciones Matemáticas
+
+El analizador reconoce y procesa un amplio conjunto de funciones matemáticas mediante mapeo directo a las implementaciones de la calculadora científica:
+
+```kotlin
+return when (identificadorFuncion.lowercase()) {
+    "sin", "sen" -> sistemaCalculoAvanzado.calcularSeno(valorArgumento)
+    "cos" -> sistemaCalculoAvanzado.calcularCoseno(valorArgumento)
+    "tan" -> sistemaCalculoAvanzado.calcularTangente(valorArgumento)
+    "sqrt", "raiz" -> sistemaCalculoAvanzado.extraerRaizCuadrada(valorArgumento)
+    // ... más funciones
+    else -> throw ErrorExpresionInvalida("Función desconocida: $identificadorFuncion")
+}
+```
+
+### 3.5 Sistema de Interfaz de Usuario
+
+#### 3.5.1 Interfaz de Línea de Comandos Interactiva
+
+La clase `SistemaInterfazUsuario` proporciona una **interfaz de línea de comandos** robusta e interactiva que incluye:
+- Banner de bienvenida con elementos gráficos Unicode
+- Sistema de ayuda contextual organizado por categorías
+- Procesamiento de comandos mediante estructura condicional `when`
+- Manejo integral de excepciones con mensajes informativos
+
+#### 3.5.2 Comandos Disponibles
+
+El sistema reconoce múltiples categorías de comandos:
+- **Expresiones matemáticas**: Evaluación directa de fórmulas complejas
+- **Gestión de memoria**: Comandos `ms`, `mr`, `m+`, `m-`, `mc`
+- **Configuración**: Modificación de precisión y modo angular
+- **Utilidades**: Historial, limpieza, estado del sistema, ayuda
+
+### 3.6 Sistema de Manejo de Errores
+
+#### 3.6.1 Jerarquía de Excepciones Personalizada
+
+El sistema implementa una **jerarquía de excepciones** especializada que hereda de la clase base `ErrorSistemaCalculadora`:
+
+- `ErrorDivisionCero`: Para operaciones de división inválidas
+- `ErrorValorInvalido`: Para argumentos fuera del dominio válido
+- `ErrorExpresionInvalida`: Para errores de sintaxis en expresiones
+
+#### 3.6.2 Manejo Robusto de Errores
+
+Cada componente del sistema incluye manejo específico de errores con mensajes descriptivos que facilitan la identificación y resolución de problemas. El manejo se implementa mediante bloques `try-catch` estratégicamente ubicados.
+
+### 3.7 Interfaz Web Complementaria
+
+#### 3.7.1 Calculadora Científica HTML
+
+El sistema incluye una **interfaz web complementaria** implementada en HTML, CSS y JavaScript que proporciona:
+- Diseño responsivo compatible con dispositivos móviles
+- Botones interactivos para todas las funciones matemáticas
+- Configuración de precisión decimal (2, 4, 6, 8, 10 decimales)
+- Selector de modo angular (radianes/grados)
+- Gestión completa de memoria con indicadores visuales
+- Historial de operaciones con funcionalidad de exportación
+  
 ![Interfaz gráfica de la calculadora](Imagenes/CalculadoraInterfaz.png)
 
 ***
