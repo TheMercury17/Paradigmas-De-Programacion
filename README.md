@@ -247,6 +247,8 @@ La clase `AnalizadorExpresiones` implementa un **parser recursivo descendente** 
 2. **Nivel intermedio**: Multiplicaciones y divisiones (`analizarTerminoMultiplicativo`)
 3. **Nivel inferior**: Factores elementales y funciones (`analizarFactorElemental`)
 
+![CalculoSencillo](Imagenes/CalculoSencillo.png)
+
 #### 3.4.2 Manejo de Funciones Matemáticas
 
 El analizador reconoce y procesa un amplio conjunto de funciones matemáticas mediante mapeo directo a las implementaciones de la calculadora científica:
@@ -261,6 +263,8 @@ return when (identificadorFuncion.lowercase()) {
     else -> throw ErrorExpresionInvalida("Función desconocida: $identificadorFuncion")
 }
 ```
+
+![CalculoComplejo](Imagenes/CalculoComplejo.png)
 
 ### 3.5 Sistema de Interfaz de Usuario
 
@@ -290,13 +294,11 @@ El sistema implementa una **jerarquía de excepciones** especializada que hereda
 - `ErrorValorInvalido`: Para argumentos fuera del dominio válido
 - `ErrorExpresionInvalida`: Para errores de sintaxis en expresiones
 
-#### 3.6.2 Manejo Robusto de Errores
-
-Cada componente del sistema incluye manejo específico de errores con mensajes descriptivos que facilitan la identificación y resolución de problemas. El manejo se implementa mediante bloques `try-catch` estratégicamente ubicados.
-
 ### 3.7 Interfaz Web Complementaria
 
 #### 3.7.1 Calculadora Científica HTML
+
+![Interfaz gráfica de la calculadora](Imagenes/CalculadoraInterfaz.png)
 
 El sistema incluye una **interfaz web complementaria** implementada en HTML, CSS y JavaScript que proporciona:
 - Diseño responsivo compatible con dispositivos móviles
@@ -306,7 +308,7 @@ El sistema incluye una **interfaz web complementaria** implementada en HTML, CSS
 - Gestión completa de memoria con indicadores visuales
 - Historial de operaciones con funcionalidad de exportación
   
-![Interfaz gráfica de la calculadora](Imagenes/CalculadoraInterfaz.png)
+
 
 ***
 
