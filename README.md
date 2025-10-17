@@ -310,7 +310,7 @@ El sistema incluye una **interfaz web complementaria** implementada en HTML, CSS
   
 ***
 
-## Comparación de Paradigmas Implementados
+## 4. Comparación de Paradigmas Implementados
 
 ### 4.1 Paradigma de Agentes vs. Programación Orientada a Objetos
 
@@ -362,10 +362,7 @@ La implementación de los tres sistemas permite establecer una **comparación di
 
 ---
 
-
-***
-
-## Conclusiones
+## 5. Conclusiones
 
 1. Las implementaciones desarrolladas demuestran la viabilidad y elegancia del paradigma de agentes para resolver problemas complejos de manera distribuida. El sistema de perceptrón ilustra cómo los agentes pueden colaborar en tareas de aprendizaje automático, mientras que la calculadora distribuida muestra la potencia de la descomposición funcional en sistemas multiagente.
 
