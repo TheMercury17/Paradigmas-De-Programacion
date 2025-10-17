@@ -118,7 +118,9 @@ El sistema implementa múltiples métricas de evaluación del aprendizaje. El **
 
 La calculadora distribuida implementa una arquitectura sofisticada donde cada operación aritmética es gestionada por un agente especializado autónomo. El sistema utiliza un paradigma de **computación distribuida** donde la resolución de expresiones matemáticas complejas emerge de la colaboración entre múltiples agentes que se comunican a través de un sistema de mensajería asíncrona.
 
-![Arquitectura del sistema de calculadora distribuida basada en agentes](https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/764475a09eb25e1e4a0e79691d7b2f2c/2b245bf4-9c2c-419d-8166-2e26b20e6b36/afb56f12.png)
+<p align="center">
+  <img src="Imagenes/CalcUML.jpeg" />
+</p>
 
 Arquitectura del sistema de calculadora distribuida basada en agentes
 
@@ -180,7 +182,9 @@ def compute_operation(self, operation_data):
 
 La interfaz gráfica proporciona tres componentes principales: un panel de entrada para expresiones matemáticas, un área de visualización de resultados, y un registro detallado de comunicación inter-agente que muestra el flujo completo de mensajes durante la evaluación.
 
-![Interfaz de calculadora distribuida mostrando comunicación entre agentes](https://user-gen-media-assets.s3.amazonaws.com/seedream_images/04f0a28e-f5b2-4386-8330-1e91fd257ce6.png)
+<p align="center">
+  <img src="Imagenes/CalcInterfaz.jpeg" />
+</p>
 
 Interfaz de calculadora distribuida mostrando comunicación entre agentes
 
