@@ -399,7 +399,19 @@ La implementación de los tres sistemas permite establecer una **comparación di
 
 ---
 
-## 5. Conclusiones
+## 5. Métricas de Desempeño y Análisis
+
+### 5.1 Complejidad Computacional
+
+| Sistema | Complejidad Temporal | Complejidad Espacial | Operaciones/Segundo |
+|---------|---------------------|---------------------|-------------------|
+| Perceptrón Agentes | O(n×m×i) | O(n+m) | ~100-500 |
+| Calculadora Distribuida | O(log n) | O(m) | ~50-200 |
+| Calculadora Kotlin | O(log n) | O(1) | ~10,000-50,000 |
+
+---
+
+## 6. Conclusiones
 
 1. Las implementaciones desarrolladas demuestran la viabilidad y elegancia del paradigma de agentes para resolver problemas complejos de manera distribuida. El sistema de perceptrón ilustra cómo los agentes pueden colaborar en tareas de aprendizaje automático, mientras que la calculadora distribuida muestra la potencia de la descomposición funcional en sistemas multiagente.
 
