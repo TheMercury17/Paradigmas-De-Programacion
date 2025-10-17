@@ -1,4 +1,4 @@
-# Segundo Parcial Paradigmas de Programación
+# Parcial 2 - Paradigmas de Programación
 
 ## Autor
 
