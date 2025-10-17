@@ -119,7 +119,7 @@ El sistema implementa múltiples métricas de evaluación del aprendizaje. El **
 La calculadora distribuida implementa una arquitectura sofisticada donde cada operación aritmética es gestionada por un agente especializado autónomo. El sistema utiliza un paradigma de **computación distribuida** donde la resolución de expresiones matemáticas complejas emerge de la colaboración entre múltiples agentes que se comunican a través de un sistema de mensajería asíncrona.
 
 <p align="center">
-  <img src="Imagenes/CalcUML.jpeg" />
+  <img src="Imagenes/CalcFlujo.png" />
 </p>
 
 Arquitectura del sistema de calculadora distribuida basada en agentes
