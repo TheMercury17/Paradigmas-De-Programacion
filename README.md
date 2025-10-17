@@ -308,15 +308,74 @@ El sistema incluye una **interfaz web complementaria** implementada en HTML, CSS
 - Gestión completa de memoria con indicadores visuales
 - Historial de operaciones con funcionalidad de exportación
   
+***
+
+## Comparación de Paradigmas Implementados
+
+### 4.1 Paradigma de Agentes vs. Programación Orientada a Objetos
+
+La implementación de los tres sistemas permite establecer una **comparación directa** entre paradigmas:
+
+| Aspecto | Agentes (Mesa) | Agentes Distribuidos | POO (Kotlin) |
+|---------|----------------|---------------------|--------------|
+| **Modularidad** | Alta - Agentes autónomos | Muy Alta - Especialización | Alta - Encapsulación |
+| **Escalabilidad** | Media - Limitada por GUI | Alta - Distribuible | Media - Monolítico |
+| **Mantenibilidad** | Media - Dependencias cruzadas | Baja - Comunicación compleja | Alta - Jerarquías claras |
+| **Reutilización** | Baja - Específico al dominio | Media - Agentes reutilizables | Alta - Herencia y polimorfismo |
+| **Debugging** | Difícil - Estados distribuidos | Muy Difícil - Mensajería | Fácil - Stack traces claros |
+
+### 4.2 Ventajas y Desventajas por Paradigma
+
+#### 4.2.1 Paradigma de Agentes (Mesa)
+**Ventajas:**
+- Modelado natural de sistemas de aprendizaje
+- Visualización integrada del comportamiento
+- Simulación de emergencia y adaptación
+
+**Desventajas:**
+- Complejidad de debugging
+- Overhead de comunicación
+- Dependencia de framework específico
+
+#### 4.2.2 Agentes Distribuidos
+**Ventajas:**
+- Escalabilidad horizontal
+- Tolerancia a fallos distribuida
+- Especialización extrema
+
+**Desventajas:**
+- Complejidad de coordinación
+- Latencia de comunicación
+- Dificultad de testing
+
+#### 4.2.3 Programación Orientada a Objetos
+**Ventajas:**
+- Código limpio y mantenible
+- Reutilización mediante herencia
+- Debugging eficiente
+- Documentación clara
+
+**Desventajas:**
+- Escalabilidad limitada
+- Arquitectura monolítica
+- Menor flexibilidad runtime
+
+---
 
 
 ***
 
 ## Conclusiones
 
-Las implementaciones desarrolladas demuestran la viabilidad y elegancia del paradigma de agentes para resolver problemas complejos de manera distribuida. El sistema de perceptrón ilustra cómo los agentes pueden colaborar en tareas de aprendizaje automático, mientras que la calculadora distribuida muestra la potencia de la descomposición funcional en sistemas multiagente.
+1. Las implementaciones desarrolladas demuestran la viabilidad y elegancia del paradigma de agentes para resolver problemas complejos de manera distribuida. El sistema de perceptrón ilustra cómo los agentes pueden colaborar en tareas de aprendizaje automático, mientras que la calculadora distribuida muestra la potencia de la descomposición funcional en sistemas multiagente.
 
-Ambos sistemas exhiben **propiedades emergentes** características de los sistemas multiagente: comportamientos complejos que surgen de la interacción entre agentes simples. La modularidad inherente de la arquitectura basada en agentes facilita la mantenibilidad, extensibilidad y escalabilidad de las soluciones implementadas.
+2. Ambos sistemas exhiben **propiedades emergentes** características de los sistemas multiagente: comportamientos complejos que surgen de la interacción entre agentes simples. La modularidad inherente de la arquitectura basada en agentes facilita la mantenibilidad, extensibilidad y escalabilidad de las soluciones implementadas.
 
-Las interfaces gráficas desarrolladas no solo proporcionan funcionalidad operativa sino también **transparencia algorítmica**, permitiendo a los usuarios observar y comprender los procesos internos de comunicación y coordinación entre agentes. Esta característica es especialmente valiosa para propósitos educativos y de investigación en el campo de los sistemas distribuidos inteligentes.
+3. Las interfaces gráficas desarrolladas no solo proporcionan funcionalidad operativa sino también **transparencia algorítmica**, permitiendo a los usuarios observar y comprender los procesos internos de comunicación y coordinación entre agentes. Esta característica es especialmente valiosa para propósitos educativos y de investigación en el campo de los sistemas distribuidos inteligentes.
+
+4. **Los agentes son ideales** para sistemas que requieren simulación de comportamientos emergentes y visualización de procesos de aprendizaje
+   
+5. **La distribución basada en agentes** excele en problemas que requieren especialización extrema y escalabilidad horizontal.
+   
+6. **La programación orientada a objetos** sigue siendo óptima para sistemas que priorizan mantenibilidad, debugging y reutilización de código
 
