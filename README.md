@@ -77,18 +77,7 @@ El sistema genera automáticamente conjuntos de datos linealmente separables med
 
 ### 1.4 Visualización y Interface Gráfica
 
-La interfaz gráfica implementa controles interactivos incluyendo sliders para la **tasa de aprendizaje** (0.01-1.0) y el **número máximo de iteraciones** (10-500). El sistema proporciona visualización en tiempo real del proceso de entrenamiento mediante dos gráficos simultáneos: el espacio de características mostrando los puntos de datos con codificación de color según su estado de clasificación, y un gráfico de evolución del error total a lo largo de las épocas de entrenamiento.
-
-![Simulación del perceptrón en entrenamiento con puntos de datos y frontera de decisión](https://user-gen-media-assets.s3.amazonaws.com/seedream_images/1b4f0343-91c8-4b35-93ec-649c3a92af17.png)
-
-Simulación del perceptrón en entrenamiento con puntos de datos y frontera de decisión
-
-### 1.5 Métricas de Desempeño y Convergencia
-
-El sistema implementa múltiples métricas de evaluación del aprendizaje. El **error de clasificación total** se calcula como la suma de errores absolutos en cada época. La **convergencia** se determina cuando el error total alcanza cero o se alcanza el número máximo de iteraciones. Adicionalmente, el sistema rastrea la evolución de los pesos y el sesgo, proporcionando información detallada sobre la dinámica del aprendizaje.
-
-
-### 1.6 Capturas de pantalla del perceptrón en funcionamiento.
+La interfaz gráfica implementa controles interactivos incluyendo sliders para la **Velocidad de aprendizaje** (0.01-1.0) y el **número máximo de epocas** (10-500). El sistema proporciona visualización en tiempo real del proceso de entrenamiento mediante dos gráficos simultáneos: el espacio de características mostrando los puntos de datos con codificación de color según su estado de clasificación, y un gráfico de evolución del error total a lo largo de las épocas de entrenamiento.
 
 #### Perceptrón - Epoca 2
 <p align="center">
@@ -112,6 +101,11 @@ El sistema implementa múltiples métricas de evaluación del aprendizaje. El **
 <p align="center">
   <img src="Imagenes/PerceptronEpoca17.jpeg" />
 </p>
+
+
+### 1.5 Métricas de Desempeño y Convergencia
+
+El sistema implementa múltiples métricas de evaluación del aprendizaje. El **error de clasificación total** se calcula como la suma de errores absolutos en cada época. La **convergencia** se determina cuando el error total alcanza cero o se alcanza el número máximo de iteraciones. Adicionalmente, el sistema rastrea la evolución de los pesos y el sesgo, proporcionando información detallada sobre la dinámica del aprendizaje.
 
 
 ***
