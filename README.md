@@ -90,25 +90,30 @@ El sistema implementa múltiples métricas de evaluación del aprendizaje. El **
 
 ### 1.6 Capturas de pantalla del perceptrón en funcionamiento.
 
-Perceptrón - Epoca 2
+#### Perceptrón - Epoca 2
 <p align="center">
   <img src="Imagenes/PerceptronEpoca2.jpeg" />
 </p>
 
-Perceptrón - Epoca 3
+
+#### Perceptrón - Epoca 3
 <p align="center">
   <img src="Imagenes/PerceptronEpoca3.jpeg" />
 </p>
 
-Perceptrón - Epoca 11
+
+#### Perceptrón - Epoca 11
 <p align="center">
   <img src="Imagenes/PerceptronEpoca11.jpeg" />
 </p>
 
-Perceptrón - Epoca 17
+
+####  Perceptrón - Epoca 17
 <p align="center">
   <img src="Imagenes/PerceptronEpoca17.jpeg" />
 </p>
+
+
 ***
 
 ## 2. Implementación de una Calculadora Basada en el Paradigma de Agentes
