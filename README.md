@@ -41,11 +41,6 @@ Donde:
 - $x$ es la variable independiente
 - $y$ es la variable dependiente
 
-<p align="center">
-  <img src="attached_image:5" alt="Caso Normal - Aplicación funcionando" />
-</p>
-
-*Figura 1: Interfaz de la aplicación mostrando el cálculo de regresión lineal con visualización gráfica*
 
 ### 1.2 Método de Mínimos Cuadrados
 
@@ -161,11 +156,7 @@ La aplicación ha sido construida utilizando un stack tecnológico moderno orien
 
 La aplicación sigue el patrón arquitectónico **Modelo-Vista-Controlador (MVC)**, ampliamente utilizado en desarrollo web. Este patrón separa la lógica de negocio, la presentación de datos y el manejo de peticiones en componentes independientes y reutilizables.
 
-<p align="center">
-  <img src="attached_image:1" alt="Caso Una Variable - Error de validación" />
-</p>
 
-*Figura 2: Validación de datos - el sistema requiere al menos 2 puntos para calcular la regresión*
 
 **Componentes de la Arquitectura MVC:**
 
@@ -340,12 +331,6 @@ fun calculateRegression(points: List<DataPoint>): RegressionResult {
 **Paso 1 - Validación de datos:**
 Verifica que haya al menos 2 puntos (requisito mínimo para trazar una línea). Utiliza la función `require()` de Kotlin que lanza `IllegalArgumentException` si la condición no se cumple, proporcionando manejo de errores declarativo.
 
-<p align="center">
-  <img src="attached_image:4" alt="Caso Vacío - Validación" />
-</p>
-
-*Figura 3: Estado inicial de la aplicación - requiere ingreso de datos*
-
 **Paso 2 - Cálculo de sumas necesarias:**
 Calcula $\sum x$, $\sum y$, $\sum xy$, $\sum x^2$ y $\sum y^2$ utilizando funciones de orden superior de Kotlin (`sumOf`). Estas sumas son los componentes fundamentales de las fórmulas de mínimos cuadrados.
 
@@ -425,11 +410,6 @@ private fun formatEquation(slope: Double, intercept: Double): String {
 - `y = 2.5000x + 3.1234`
 - `y = 1.2345x - 0.5678`
 
-<p align="center">
-  <img src="attached_image:2" alt="Caso Valores Extremos" />
-</p>
-
-*Figura 4: La aplicación maneja correctamente valores extremos y calcula regresiones con alta precisión*
 
 ### 3.3 Capa de Controladores
 
@@ -581,7 +561,7 @@ La interfaz de usuario está completamente contenida en el archivo `index.html` 
 <body>
     <div class="container">
         <div class="header">
-            <h1>📊 Calculadora de Regresión Lineal</h1>
+            <h1>Calculadora de Regresión Lineal</h1>
             <p>Desarrollado con Spring Boot + Kotlin</p>
         </div>
         
@@ -612,7 +592,7 @@ Utiliza **CSS Grid** para diseño de dos columnas responsivo que se adapta autom
 
 ```html
 <div class="input-section">
-    <h2>📝 Entrada de Datos</h2>
+    <h2>Entrada de Datos</h2>
     
     <!-- Mensaje de validación -->
     <div id="errorMessage" class="error-message" style="display: none;"></div>
@@ -622,7 +602,7 @@ Utiliza **CSS Grid** para diseño de dos columnas responsivo que se adapta autom
     <div class="input-group">
         <input type="number" id="xValue" placeholder="Valor X" step="any" required>
         <input type="number" id="yValue" placeholder="Valor Y" step="any" required>
-        <button onclick="addPoint()" class="btn-primary">➕ Agregar Punto</button>
+        <button onclick="addPoint()" class="btn-primary"> Agregar Punto</button>
     </div>
     
     <!-- Tabla de puntos -->
@@ -642,10 +622,10 @@ Utiliza **CSS Grid** para diseño de dos columnas responsivo que se adapta autom
     
     <!-- Botones de acción -->
     <button onclick="calculateRegression()" class="btn-calculate">
-        🧮 Calcular Regresión
+         Calcular Regresión
     </button>
-    <button onclick="clearAll()" class="btn-secondary">🗑️ Limpiar Todo</button>
-    <button onclick="loadExample()" class="btn-warning">💡 Cargar Ejemplo</button>
+    <button onclick="clearAll()" class="btn-secondary"> Limpiar Todo</button>
+    <button onclick="loadExample()" class="btn-warning"> Cargar Ejemplo</button>
 </div>
 ```
 
@@ -660,7 +640,7 @@ Utiliza **CSS Grid** para diseño de dos columnas responsivo que se adapta autom
 
 ```html
 <div class="results-section">
-    <h2>📊 Resultados</h2>
+    <h2> Resultados</h2>
     
     <div id="initialMessage" class="placeholder-message">
         Ingresa al menos 2 puntos y calcula la regresión
@@ -704,11 +684,6 @@ Utiliza **CSS Grid** para diseño de dos columnas responsivo que se adapta autom
 - **Grid de métricas**: Diseño organizado de resultados numéricos
 - **Canvas Chart.js**: Elemento HTML5 canvas para renderizado gráfico
 
-<p align="center">
-  <img src="attached_image:3" alt="Caso Datos Inválidos" />
-</p>
-
-*Figura 5: Manejo de errores - validación cuando se ingresan caracteres no numéricos*
 
 ### 4.3 Lógica JavaScript
 
@@ -1079,7 +1054,7 @@ El siguiente diagrama conceptual describe el flujo completo de datos desde que e
 #### Paso 2: Sincronización de Gradle
 1. Al abrir el proyecto, IntelliJ detectará que es un proyecto Gradle
 2. Aparecerá una notificación solicitando "Load Gradle Changes"
-3. Haga clic en "Load Gradle Changes" o en el ícono de sincronización (🔄)
+3. Haga clic en "Load Gradle Changes" o en el ícono de sincronización
 4. Espere 3-5 minutos mientras Gradle descarga dependencias
 5. La barra de progreso en la parte inferior mostrará el estado
 
@@ -1092,7 +1067,7 @@ El siguiente diagrama conceptual describe el flujo completo de datos desde que e
 1. En el explorador de proyectos, navegue a:
    `src/main/kotlin/com/regresionlineal/Application.kt`
 2. Abra el archivo `Application.kt`
-3. Localice el ícono de triángulo verde (▶) junto a `fun main`
+3. Localice el ícono verde junto a `fun main`
 4. Haga clic en el triángulo y seleccione "Run LinearRegressionApplication"
 5. La consola mostrará logs de inicio de Spring Boot
 6. Espere el mensaje: `Started LinearRegressionApplication in X seconds`
@@ -1109,23 +1084,23 @@ El siguiente diagrama conceptual describe el flujo completo de datos desde que e
 1. Localice los campos de entrada "Valor X" y "Valor Y"
 2. Ingrese un valor numérico para X (puede incluir decimales)
 3. Ingrese el valor correspondiente para Y
-4. Presione "➕ Agregar Punto" o simplemente presione Enter
+4. Presione "Agregar Punto" o simplemente presione Enter
 5. El punto aparecerá en la tabla de datos
 6. Repita hasta tener al menos 2 puntos (recomendado: 5 o más)
 
 #### Paso 2: Usar Datos de Ejemplo (Opcional)
-1. Haga clic en "💡 Cargar Ejemplo"
+1. Haga clic en "Cargar Ejemplo"
 2. Se cargarán automáticamente varios puntos de datos
 3. Útil para ver la aplicación en acción rápidamente
 
 #### Paso 3: Gestionar Puntos Individuales
-1. En la tabla, cada fila tiene un botón "✖" a la derecha
+1. En la tabla, cada fila tiene un botón para elimiar el punto a la derecha
 2. Haga clic para eliminar un punto específico si cometió un error
 3. La tabla se actualizará automáticamente
 
 #### Paso 4: Calcular la Regresión
 1. Con al menos 2 puntos ingresados
-2. Haga clic en "🧮 Calcular Regresión"
+2. Haga clic en "Calcular Regresión"
 3. La aplicación enviará datos al servidor
 4. Los resultados aparecerán en la sección derecha
 
@@ -1140,13 +1115,13 @@ El siguiente diagrama conceptual describe el flujo completo de datos desde que e
 - **Gráfico**: Puntos azules (datos originales) + línea roja (regresión)
 
 #### Paso 6: Limpiar y Comenzar de Nuevo
-1. Haga clic en "🗑️ Limpiar Todo"
+1. Haga clic en "Limpiar Todo"
 2. Esto eliminará todos los puntos, resultados y gráfico
 3. La aplicación estará lista para un nuevo análisis
 
 ### 6.4 Consejos de Uso
 
-✅ **Mejores prácticas:**
+**Mejores prácticas:**
 - Ingrese al menos 5-10 puntos para resultados más confiables
 - Datos con relación lineal fuerte producen R² más altos
 - Verifique que haya ingresado al menos 2 puntos
@@ -1175,10 +1150,10 @@ El siguiente diagrama conceptual describe el flujo completo de datos desde que e
 ### 7.1 Caso Normal: Funcionamiento Estándar
 
 <p align="center">
-  <img src="attached_image:5" alt="Caso Normal" />
+  <img src="Imagenes/CasoNormal.jpg" alt="Caso Normal" />
 </p>
 
-*Figura 6: Caso de uso normal - 5 puntos con relación lineal, R² = 0.6000*
+*Figura 1: Caso de uso normal - 5 puntos con relación lineal, R² = 0.6000*
 
 **Datos de entrada:**
 - (1, 2), (2, 4), (3, 5), (4, 4), (5, 5)
@@ -1190,10 +1165,10 @@ El siguiente diagrama conceptual describe el flujo completo de datos desde que e
 ### 7.2 Caso Validación: Menos de 2 Puntos
 
 <p align="center">
-  <img src="attached_image:1" alt="Caso Una Variable" />
+  <img src="Imagenes/CasoUnaVariable.jpg" alt="Caso Una Variable" />
 </p>
 
-*Figura 7: Validación - error cuando hay menos de 2 puntos*
+*Figura 2: Validación - error cuando hay menos de 2 puntos*
 
 **Comportamiento:**
 Sistema valida y previene cálculo con datos insuficientes
@@ -1201,10 +1176,10 @@ Sistema valida y previene cálculo con datos insuficientes
 ### 7.3 Caso Extremo: Valores Grandes
 
 <p align="center">
-  <img src="attached_image:2" alt="Caso Valores Extremos" />
+  <img src="Imagenes/CasoValoresExtremos.jpg" alt="Caso Valores Extremos" />
 </p>
 
-*Figura 8: Manejo de valores extremos - la aplicación calcula correctamente regresiones con números grandes*
+*Figura 3: Manejo de valores extremos - la aplicación calcula correctamente regresiones con números grandes*
 
 **Datos de entrada:**
 - (2345434, 45234324), (45333, 532423), (52423, 53434)
@@ -1216,10 +1191,10 @@ Sistema valida y previene cálculo con datos insuficientes
 ### 7.4 Caso Error: Datos Inválidos
 
 <p align="center">
-  <img src="attached_image:3" alt="Caso Datos Inválidos" />
+  <img src="Imagenes/CasoDatosInvalidos.jpg" alt="Caso Datos Inválidos" />
 </p>
 
-*Figura 9: Validación de tipos - el sistema rechaza caracteres no numéricos*
+*Figura 4: Validación de tipos - el sistema rechaza caracteres no numéricos*
 
 **Comportamiento:**
 Validación en tiempo real que previene entrada de caracteres no numéricos
@@ -1227,10 +1202,10 @@ Validación en tiempo real que previene entrada de caracteres no numéricos
 ### 7.5 Caso Inicial: Estado Vacío
 
 <p align="center">
-  <img src="attached_image:4" alt="Caso Vacío" />
+  <img src="Imagenes/CasoVacio.jpg" alt="Caso Vacío" />
 </p>
 
-*Figura 10: Estado inicial de la aplicación sin datos ingresados*
+*Figura 5: Estado inicial de la aplicación sin datos ingresados*
 
 **Comportamiento:**
 Interfaz limpia esperando entrada del usuario con mensaje instructivo
