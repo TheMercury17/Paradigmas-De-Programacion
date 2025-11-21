@@ -82,7 +82,7 @@ Con 4 workers:
 **Diagrama:**
 ```
 ┌─────────────────────────────────────────────┐
-│   ThreadPoolCoordinator (Main Thread)        │
+│   ThreadPoolCoordinator (Main Thread)       │
 │  - Gestiona pool de threads                 │
 │  - Coordina sincronización de workers       │
 │  - Agrega resultados parciales              │
@@ -92,7 +92,7 @@ Con 4 workers:
         │            │          │          │
    ┌────▼──┐   ┌────▼──┐  ┌───▼──┐  ┌───▼──┐
    │Worker │   │Worker │  │Worker│  │Worker│
-   │ #1    │   │ #2    │  │ #3  │  │ #4  │
+   │ #1    │   │ #2    │  │ #3   │  │ #4   │
    └────┬──┘   └────┬──┘  └───┬──┘  └───┬──┘
         └───────────┴─────────┴────────┘
 ```
