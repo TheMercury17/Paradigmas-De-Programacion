@@ -88,13 +88,13 @@ Con 4 workers:
 │  - Agrega resultados parciales              │
 └──────────────┬──────────────────────────────┘
                │
-        ┌──────┴─────┬──────────┬──────────┐
-        │            │          │          │
+        ┌──────┴─────┬──────────┬───────┐
+        │            │          │       │
    ┌────▼──┐   ┌────▼──┐  ┌───▼──┐  ┌───▼──┐
    │Worker │   │Worker │  │Worker│  │Worker│
    │ #1    │   │ #2    │  │ #3   │  │ #4   │
    └────┬──┘   └────┬──┘  └───┬──┘  └───┬──┘
-        └───────────┴─────────┴────────┘
+        └───────────┴─────────┴─────────┘
 ```
 
 
@@ -246,10 +246,10 @@ def calculate_gradients(w, b, X, y):
     ┌────────────▼──────────────────────────────┐
     │    AOP WEAVER / PROXY LAYER               │
     │  - Intercepta llamadas a core logic       │
-    │  - Distribuye a aspectos aplicables      │
-    │  - Ordena ejecución de aspectos          │
-    └────┬──────────┬────────┬─────────────────┘
-         │          │        │
+    │  - Distribuye a aspectos aplicables       │
+    │  - Ordena ejecución de aspectos           │
+    └────┬─────────┬────────┬───────────────────┘
+         │         │        │
     ┌────▼──┐  ┌───▼──┐  ┌──▼───┐
     │LOGGING│  │VALID │  │CACHE │
     │ASPECT │  │ASPECT│  │ASPECT│
@@ -739,7 +739,9 @@ Rust SIMD:          16.8 ms   (14.58x)
 
 ```
 proyecto/
-├── README.md                          ← Este archivo
+├── README.md                                    ← Este archivo
+├── Instalación.md                               ← Guia sencilla de instalación
+├── Comparativa detallada Python vs Rust.md      ← Un analisis más detallado de la comparativa entre Python y Rust
 │
 ├── python/
 │   ├── linear_regression.py           ← Implementación Python
@@ -747,7 +749,7 @@ proyecto/
 │
 └── rust/
     ├── Cargo.toml                     ← Manifest Rust
-    └── rust_linear_regression.rs                    ← Código Rust
+    └── rust_linear_regression.rs      ← Código Rust
 
 ```
 
