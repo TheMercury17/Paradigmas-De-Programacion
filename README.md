@@ -741,7 +741,7 @@ Rust SIMD:          16.8 ms   (14.58x)
 proyecto/
 ├── README.md                                    ← Este archivo
 ├── Instalación.md                               ← Guia sencilla de instalación
-├── Comparativa detallada Python vs Rust.md      ← Un analisis más detallado de la comparativa entre Python y Rust
+├── Comparativa detallada Python vs Rust.md      ← Un analisis más detallado entre Python y Rust
 │
 ├── python/
 │   ├── linear_regression.py           ← Implementación Python
