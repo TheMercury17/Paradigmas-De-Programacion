@@ -6,8 +6,6 @@
 ## Autor
 
 **Andrés Sebastián Coral Vallejo**  
-Universidad Nacional de Colombia - Sede Bogotá  
-Fecha: Noviembre 2025
 
 ---
 
