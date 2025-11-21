@@ -745,15 +745,10 @@ proyecto/
 │   ├── linear_regression.py           ← Implementación Python
 │   └── requirements.txt               ← Dependencias Python
 │
-├── rust/
-│   ├── Cargo.toml                     ← Manifest Rust
-│   └── src/
-│       └── rust_linear_regression.rs                    ← Código Rust
-│
-└── comparative/
-    ├── benchmark_comparison.py        ← Comparativa Python vs Rust
-    └── results/
-        └── performance_report.csv     ← Resultados en CSV
+└── rust/
+    ├── Cargo.toml                     ← Manifest Rust
+    └── rust_linear_regression.rs                    ← Código Rust
+
 ```
 
 ---
