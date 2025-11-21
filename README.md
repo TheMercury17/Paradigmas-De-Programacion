@@ -38,9 +38,9 @@ Este trabajo de investigación y desarrollo aborda el problema planteado de la r
 
 La regresión lineal busca ajustar una línea a un conjunto de datos mediante minimización de la función de costo MSE:
 
-```
-MSE(w, b) = (1/m) * Σ(ŷᵢ - yᵢ)²
-```
+
+$MSE(w, b) = (1/m) * Σ(ŷᵢ - yᵢ)²$
+
 
 donde:
 - `w` es la pendiente (weight)
@@ -48,7 +48,7 @@ donde:
 - `ŷᵢ = w·xᵢ + b` es la predicción
 - `m` es el número de ejemplos
 
-El algoritmo **Gradient Descent** actualiza los parámetros iterativamente:
+El algoritmo Gradient Descent actualiza los parámetros iterativamente:
 
 ```
 ∂MSE/∂w = (2/m) * Σ(ŷᵢ - yᵢ) * xᵢ
