@@ -376,32 +376,6 @@ Todos los modelos convergen a los mismos parámetros:
 
 ---
 
-## RECOMENDACIONES
-
-### Cuándo usar Python
-
-✅ **Prototipado rápido** - Desarrollo iterativo, experimentación  
-✅ **Datasets pequeños** - Overhead de interpretación amortizado  
-✅ **Análisis exploratorio** - Interactividad de Jupyter  
-✅ **Integración con ML** - Ecosistema de libraries (TensorFlow, PyTorch)
-
-❌ **Producción de alto rendimiento**  
-❌ **Sistemas embebidos**  
-❌ **Datasets enormes**  
-
-### Cuándo usar Rust
-
-✅ **Máximo rendimiento** - 10-15x más rápido en CPU-bound  
-✅ **Sistemas críticos** - Predecible, sin GC pauses  
-✅ **Bajo nivel** - Control total de memoria y CPU  
-✅ **Embedding** - Binarios pequeños, sin runtime
-
-❌ **Prototipado rápido** - Curva de aprendizaje  
-❌ **Scripts únicos** - Tiempo de compilación  
-❌ **Equipos sin experiencia**  
-
----
-
 ## CONCLUSIONES
 
 ### Hallazgos
