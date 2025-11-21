@@ -1,0 +1,23 @@
+[package]
+name = "linear_regression_rust"
+version = "1.0.0"
+edition = "2025"
+authors = ["Andrés Sebastián Coral Vallejo"]
+description = "Implementación de Regresión Lineal en Rust con benchmarks"
+
+[dependencies]
+# No se requieren dependencias externas para la implementación básica
+# Las bibliotecas son estándar de Rust
+
+[[bin]]
+name = "linear_regression"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[profile.bench]
+opt-level = 3
+lto = true
